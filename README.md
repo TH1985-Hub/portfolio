@@ -11,6 +11,14 @@ pnpm run build
 pnpm run lint
 ```
 
+## Deployment
+
+This repo deploys to GitHub Pages with GitHub Actions.
+
+1. Push to `main`
+2. GitHub Actions builds the app and publishes `dist`
+3. In GitHub `Settings -> Pages`, set `Source` to `GitHub Actions`
+
 ## Structure
 
 - `src/app/router.tsx` — routes
