@@ -1,0 +1,20 @@
+---
+description: TypeScript policy, lint discipline, and project-wide style
+alwaysApply: true
+---
+
+# TypeScript and quality
+
+- Enable and rely on **strict** compiler options (`strict` and related flags in `tsconfig.app.json`). No `any`; use precise types or `unknown` with narrowing.
+- Use **`type` aliases only** for object shapes and props — do not use `interface`.
+- Do **not** use `eslint-disable`, `eslint-disable-next-line`, or blanket file-level ignores. Fix the root cause or adjust config in `eslint.config.js` with team agreement.
+- Prefer small, explicit modules; meaningful names; no dead code. Keep behavior easy to follow and safe to change.
+
+# Stack and paths
+
+- Vite, React, TypeScript, Ant Design, React Router (`createBrowserRouter` in `src/app/router.tsx`).
+- Imports use the `@/` alias → `src` (see `vite.config.ts`).
+
+# Components (folder rules summary)
+
+- See `react-tsx.mdc` for structure (camelCase folders, CSS modules, class components). Apply the same folder layout to pages under `src/pages/`.

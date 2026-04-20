@@ -1,0 +1,34 @@
+---
+description: React components — classes, folders, CSS modules, no inline styles
+globs: "**/*.{tsx,css}"
+alwaysApply: false
+---
+
+# UI components (not entry/bootstrap files)
+
+## Component shape
+
+- Implement UI as **`React.Component` / `PureComponent` subclasses**, not function components. Reserve function components only for app entry/bootstrap if unavoidable (`main.tsx`, root `createRoot`).
+- Export the class from the component folder’s `index.tsx` (named export is fine).
+
+## Folder layout (required)
+
+Each component lives in a **camelCase** folder matching the component name, with:
+
+| File | Purpose |
+|------|--------|
+| `index.tsx` | Component class and JSX |
+| `styles.module.css` | All styling (no inline styles in TSX) |
+| `types.ts` | Shared `type` aliases only (no `interface`, no `any`) |
+| `utils.ts` | Pure helpers used by this component |
+| `const.ts` | Constants for this component |
+
+Example: `src/components/appLayout/index.tsx`, `.../appLayout/styles.module.css`, etc.
+
+## Styling
+
+- **No inline styles** — no `style={{ ... }}` on DOM or components. Use CSS Modules classes (`className={styles.foo}`), composition with Ant Design `className` where supported, and global tokens in CSS when needed (e.g. variables from `:root` or Ant theme CSS variables), not JS style objects.
+
+## Routing
+
+- Internal navigation: `react-router-dom` (`Link`, etc.). Class components that need router data should receive props from a parent route element or a small typed wrapper that uses hooks and passes plain props down — avoid scattering hooks in the class file.

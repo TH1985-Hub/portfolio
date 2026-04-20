@@ -1,9 +1,10 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom'
-import { AppLayout } from '@/components/layout/AppLayout'
-import { AboutPage } from '@/pages/about/AboutPage'
-import { ContactPage } from '@/pages/contact/ContactPage'
-import { HomePage } from '@/pages/home/HomePage'
-import { ProjectsPage } from '@/pages/projects/ProjectsPage'
+import { AppLayout } from '@/components/appLayout'
+import { AboutPage } from '@/pages/About'
+import { ContactPage } from '@/pages/Contact'
+import { ExperiencePage } from '@/pages/Experience'
+import { HomePage } from '@/pages/Home'
+import { ProjectsPage } from '@/pages/Projects'
 
 export const router = createBrowserRouter([
   {
@@ -13,6 +14,7 @@ export const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: 'about', element: <AboutPage /> },
       { path: 'projects', element: <ProjectsPage /> },
+      { path: 'experience', element: <ExperiencePage /> },
       { path: 'contact', element: <ContactPage /> },
     ],
   },

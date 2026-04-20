@@ -1,0 +1,24 @@
+.card {
+  background: var(--app-surface);
+  border: 1px solid var(--app-border);
+  box-shadow: var(--app-shadow);
+}
+
+.title {
+  margin-top: 0;
+  color: var(--app-text);
+}
+
+.subtitle {
+  max-width: 720px;
+  color: var(--app-text-muted);
+}
+
+.tag {
+  border: 1px solid var(--app-border);
+  background: var(--app-surface-2);
+  color: var(--app-text);
+  border-radius: 999px;
+  padding-inline: 10px;
+}
+
