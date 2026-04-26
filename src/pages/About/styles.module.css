@@ -1,10 +1,17 @@
+.card {
+  border-radius: 24px;
+}
+
 .paragraph {
   font-size: 16px;
   max-width: 720px;
+}
+
+.sectionTitle {
+  margin-top: 24px !important;
 }
 
 .listIcon {
   color: #6366f1;
   margin-right: 8px;
 }
-

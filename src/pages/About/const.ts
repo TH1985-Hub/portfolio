@@ -1,8 +1,7 @@
-import type { StrengthItem } from './types'
+import { profileContent } from "@/content/profile";
+import type { StrengthItem } from "./types";
 
-export const strengths: StrengthItem[] = [
-  'Architecture for medium/large SPAs (routing, boundaries, performance).',
-  'UI systems: tokens, components, accessibility, documentation.',
-  'TypeScript-first APIs, strict boundaries, predictable state.',
-]
+export const aboutParagraphs = [...profileContent.aboutParagraphs];
+export const educationItems = [...profileContent.educationItems];
 
+export const strengths: StrengthItem[] = [...profileContent.strengths];

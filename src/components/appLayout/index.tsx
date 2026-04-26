@@ -1,24 +1,28 @@
+import { useState } from "react";
 import {
   GithubOutlined,
   LinkedinOutlined,
   MoonOutlined,
   SunOutlined,
   TwitterOutlined,
-} from '@ant-design/icons'
-import { Button, Layout, Menu, Space, Typography } from 'antd'
-import { PureComponent, useContext } from 'react'
-import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-import { ThemeModeContext } from '@/App'
-import { menuItems } from './const'
-import styles from './styles.module.css'
-import type { AppLayoutViewProps } from './types'
-import { getSelectedMenuKeys } from './utils'
+} from "@ant-design/icons";
+import { Button, Layout, Menu, Space, Typography } from "antd";
+import { PureComponent, useContext } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { GeminiWidget } from "../../pages/Gemini/widget";
 
-const { Header, Content, Footer } = Layout
+import { ThemeModeContext } from "@/App";
+import { menuItems } from "./const";
+import styles from "./styles.module.css";
+import type { AppLayoutViewProps } from "./types";
+import { getSelectedMenuKeys, shouldShowGeminiWidget } from "./utils";
+
+const { Header, Content, Footer } = Layout;
 
 class AppLayoutView extends PureComponent<AppLayoutViewProps> {
   render() {
-    const selectedKeys = getSelectedMenuKeys(this.props.pathname)
+    const selectedKeys = getSelectedMenuKeys(this.props.pathname);
+    const { showGeminiWidget } = this.props;
 
     return (
       <Layout className={styles.root}>
@@ -31,7 +35,7 @@ class AppLayoutView extends PureComponent<AppLayoutViewProps> {
             selectedKeys={selectedKeys}
             items={menuItems}
             onClick={({ key }) => {
-              this.props.onNavigate(key)
+              this.props.onNavigate(key);
             }}
             className={styles.menu}
           />
@@ -40,16 +44,22 @@ class AppLayoutView extends PureComponent<AppLayoutViewProps> {
               aria-label="Toggle theme"
               className={styles.themeButton}
               icon={
-                this.props.themeMode === 'dark' ? <SunOutlined /> : <MoonOutlined />
+                this.props.themeMode === "dark" ? (
+                  <SunOutlined />
+                ) : (
+                  <MoonOutlined />
+                )
               }
               onClick={() => {
-                this.props.onToggleThemeMode()
+                this.props.onToggleThemeMode();
               }}
             />
           </Space>
         </Header>
         <Content className={styles.content}>
           <Outlet />
+
+          {showGeminiWidget && <GeminiWidget />}
         </Content>
         <Footer className={styles.footer}>
           <div className={styles.footerInner}>
@@ -57,7 +67,10 @@ class AppLayoutView extends PureComponent<AppLayoutViewProps> {
               <Typography.Text type="secondary" className={styles.footerBrand}>
                 DevPortfolio
               </Typography.Text>
-              <Typography.Text type="secondary" className={styles.footerCopyright}>
+              <Typography.Text
+                type="secondary"
+                className={styles.footerCopyright}
+              >
                 © {new Date().getFullYear()} Built with React & TypeScript
               </Typography.Text>
             </div>
@@ -75,26 +88,33 @@ class AppLayoutView extends PureComponent<AppLayoutViewProps> {
           </div>
         </Footer>
       </Layout>
-    )
+    );
   }
 }
 
 export function AppLayout() {
-  const location = useLocation()
-  const navigate = useNavigate()
-  const theme = useContext(ThemeModeContext)
+  const location = useLocation();
+  const navigate = useNavigate();
+  const theme = useContext(ThemeModeContext);
+
+  const [isChatOpen, setIsChatOpen] = useState(false);
+
+  const showGeminiWidget = shouldShowGeminiWidget(location.pathname);
 
   return (
     <AppLayoutView
       pathname={location.pathname}
+      showGeminiWidget={showGeminiWidget}
+      isChatOpen={isChatOpen}
+      onOpenChat={() => setIsChatOpen(true)}
+      onCloseChat={() => setIsChatOpen(false)}
       onNavigate={(to) => {
-        void navigate(to)
+        void navigate(to);
       }}
-      themeMode={theme?.mode ?? 'dark'}
+      themeMode={theme?.mode ?? "dark"}
       onToggleThemeMode={() => {
-        theme?.toggleMode()
+        theme?.toggleMode();
       }}
     />
-  )
+  );
 }
-

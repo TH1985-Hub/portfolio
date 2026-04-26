@@ -3,8 +3,10 @@ import { AppLayout } from '@/components/appLayout'
 import { AboutPage } from '@/pages/About'
 import { ContactPage } from '@/pages/Contact'
 import { ExperiencePage } from '@/pages/Experience'
+import { GeminiPage } from '@/pages/Gemini'
 import { HomePage } from '@/pages/Home'
 import { ProjectsPage } from '@/pages/Projects'
+import { ResumePage } from '@/pages/Resume'
 
 // GitHub Pages serves static files and does not rewrite SPA routes.
 // Hash-based routing keeps deep links working after deployment.
@@ -15,7 +17,9 @@ export const router = createHashRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: 'about', element: <AboutPage /> },
+      { path: 'gemini', element: <GeminiPage /> },
       { path: 'projects', element: <ProjectsPage /> },
+      { path: 'resume', element: <ResumePage /> },
       { path: 'experience', element: <ExperiencePage /> },
       { path: 'contact', element: <ContactPage /> },
     ],

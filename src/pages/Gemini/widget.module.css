@@ -1,0 +1,308 @@
+.root {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.panel {
+  width: min(420px, calc(100vw - 32px));
+  border-radius: 30px !important;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(167, 139, 250, 0.18), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.16), transparent 32%),
+    rgba(12, 18, 34, 0.94) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 30px 80px rgba(7, 10, 23, 0.36);
+  backdrop-filter: blur(18px);
+}
+
+.panel :global(.ant-card-body) {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.panelCopy {
+  min-width: 0;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #d9c8ff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 12px 0 6px !important;
+  color: #f7f8ff !important;
+}
+
+.title :global(.anticon) {
+  margin-right: 8px;
+}
+
+.subtitle {
+  margin: 0 !important;
+  color: rgba(232, 235, 255, 0.72) !important;
+  line-height: 1.65;
+}
+
+.headerActions {
+  flex-shrink: 0;
+}
+
+.pageLink {
+  display: inline-flex;
+}
+
+.openPageButton,
+.closeButton {
+  border-radius: 999px !important;
+  color: #f7f8ff !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.openPageButton:hover,
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #fff !important;
+}
+
+.messages {
+  min-height: 260px;
+  max-height: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.userRow,
+.botRow {
+  display: flex;
+}
+
+.userRow {
+  justify-content: flex-end;
+}
+
+.botRow {
+  justify-content: flex-start;
+}
+
+.userMsg,
+.botMsg {
+  max-width: 88%;
+  padding: 12px 14px;
+  border-radius: 20px;
+  line-height: 1.65;
+  word-break: break-word;
+}
+
+.userMsg {
+  background: linear-gradient(135deg, #6d5efc, #21b0ff);
+  color: #fff;
+  border-bottom-right-radius: 8px;
+  box-shadow: 0 14px 30px rgba(33, 176, 255, 0.24);
+}
+
+.botMsg {
+  background: rgba(255, 255, 255, 0.06);
+  color: #f5f7ff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom-left-radius: 8px;
+}
+
+.botMsg :global(p),
+.userMsg :global(p) {
+  margin: 0;
+}
+
+.botMsg :global(p + p),
+.userMsg :global(p + p) {
+  margin-top: 8px;
+}
+
+.botMsg :global(ul),
+.botMsg :global(ol),
+.userMsg :global(ul),
+.userMsg :global(ol) {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+
+.loader {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(232, 235, 255, 0.7);
+}
+
+.inputArea {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.inputArea :global(.ant-input) {
+  border-radius: 16px;
+}
+
+.inputArea :global(.ant-btn) {
+  min-width: 112px;
+  border-radius: 16px;
+  border: none;
+  background: linear-gradient(135deg, var(--app-accent), var(--app-accent-2));
+  /* background: linear-gradient(135deg, #6d5efc, #21b0ff); */
+  box-shadow: 0 14px 30px rgba(33, 176, 255, 0.24);
+}
+
+.trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #f7f8ff;
+  cursor: pointer;
+  transition:
+    transform 0.22s ease,
+    filter 0.22s ease;
+}
+
+.trigger:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.triggerActive {
+  transform: scale(1.03);
+}
+
+.triggerHalo {
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(58, 190, 255, 0.28) 0%,
+    rgba(58, 190, 255, 0.12) 38%,
+    rgba(58, 190, 255, 0) 72%
+  );
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.triggerRing,
+.triggerIcon {
+  position: relative;
+  z-index: 1;
+}
+
+.triggerRing {
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(150, 201, 255, 0.34);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 10px 30px rgba(12, 18, 34, 0.2);
+}
+
+.triggerIcon {
+  width: 52px;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.22s ease;
+}
+
+.trigger:hover .triggerIcon,
+.triggerActive .triggerIcon {
+  transform: scale(1.06);
+}
+
+.mark {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 8px 24px rgba(58, 190, 255, 0.24));
+}
+
+.trigger:focus-visible {
+  outline: none;
+}
+
+.trigger:focus-visible .triggerRing {
+  border-color: rgba(124, 242, 195, 0.75);
+  box-shadow:
+    0 0 0 4px rgba(124, 242, 195, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    0 10px 30px rgba(12, 18, 34, 0.24);
+}
+
+@media (max-width: 767px) {
+  .root {
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
+    align-items: stretch;
+  }
+
+  .panel {
+    width: 100%;
+  }
+
+  .panelHeader {
+    flex-direction: column;
+  }
+
+  .headerActions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .inputArea {
+    grid-template-columns: 1fr;
+  }
+
+  .inputArea :global(.ant-btn) {
+    width: 100%;
+  }
+
+  .trigger {
+    width: 64px;
+    height: 64px;
+    align-self: flex-end;
+  }
+}

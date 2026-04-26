@@ -34,23 +34,7 @@ export const HomePage = () => {
               </span>
             </Title>
             <Paragraph className={styles.heroParagraph}>
-              I am Tatevik Harutyunyan, a{" "}
-              <span className={styles.heroParagraphEmphasis}>
-                Frontend Engineer
-              </span>{" "}
-              specializing in building{" "}
-              <span className={styles.heroParagraphEmphasis}>
-                scalable, high-performance
-              </span>{" "}
-              web applications. With{" "}
-              <span className={styles.heroParagraphAccent}>
-                2 years of React experience
-              </span>
-              , I blend technical rigor with sophisticated{" "}
-              <span className={styles.heroParagraphEmphasis}>
-                design systems
-              </span>
-              .
+              {homeCopy.subtitle}
             </Paragraph>
             <Space wrap size={12} className={styles.heroActions}>
               <Link to="/projects">
@@ -58,13 +42,9 @@ export const HomePage = () => {
                   {homeCopy.ctaPrimary} <ArrowRightOutlined />
                 </Button>
               </Link>
-              <Button
-                className={styles.resumeButton}
-                href="/resume.pdf"
-                target="_blank"
-              >
-                {homeCopy.ctaSecondary}
-              </Button>
+              <Link to="/resume">
+                <Button className={styles.resumeButton}>{homeCopy.ctaSecondary}</Button>
+              </Link>
             </Space>
             <Space wrap size={10} className={styles.stackRow}>
               <Typography.Text className={styles.stackLabel}>

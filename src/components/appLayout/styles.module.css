@@ -16,7 +16,8 @@
 .title {
   margin: 0;
   flex-shrink: 0;
-  color: var(--app-text);
+  color: var(--app-accent) !important;
+  /* color: var(--app-text); */
 }
 
 .menu {
@@ -83,7 +84,7 @@
 
 .footerBrand {
   font-weight: 600;
-  color: var(--app-accent) !Important;
+  color: var(--app-accent) !important;
 }
 
 .footerCopyright {
@@ -97,4 +98,3 @@
 .footerLinks :global(a:hover) {
   color: var(--app-text);
 }
-

@@ -1,8 +1,9 @@
+import { profileContent } from "@/content/profile";
+
 export const homeCopy = {
   badge: "AVAILABLE FOR NEW OPPORTUNITIES",
   title: "Crafting Digital Experiences with React.",
-  subtitle:
-    "I am Tatevik Harutyunyan, a Frontend Engineer specializing in building scalable, high-performance web applications. With 2 years of React experience, I blend technical rigor with sophisticated design systems.",
+  subtitle: profileContent.shortSummary,
   ctaPrimary: "View My Work",
   ctaSecondary: "Resume",
   stackLabel: "CORE TECH STACK:",
