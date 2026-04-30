@@ -5,52 +5,70 @@ import {
   ThunderboltOutlined,
 } from "@ant-design/icons";
 import { Button, Card, Col, Row, Space, Tag, Typography } from "antd";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { homeCopy } from "./const";
 import styles from "./styles.module.css";
 
 const { Title, Paragraph } = Typography;
+const TECH_STACK = ["React", "TypeScript", "Ant Design"] as const;
+const COMPLETED_PROJECTS = "15+";
 
 const renderSkillIcon = (title: string) => {
-  if (title === "React Mastery") return <ThunderboltOutlined />;
-  if (title === "TypeScript") return <CodeOutlined />;
+  if (title.includes("React")) return <ThunderboltOutlined />;
+  if (title.includes("TypeScript")) return <CodeOutlined />;
   return <AppstoreOutlined />;
 };
 
 export const HomePage = () => {
+  const { t } = useTranslation();
+  const cards = [
+    {
+      title: t("home.reactMastery"),
+      description: t("home.reactMasteryDescription"),
+    },
+    {
+      title: t("home.typeScript"),
+      description: t("home.typeScriptDescription"),
+    },
+    {
+      title: t("home.uiSystems"),
+      description: t("home.uiSystemsDescription"),
+    },
+  ];
+
   return (
     <div className={styles.root}>
       <Row gutter={[24, 24]} align="middle" className={styles.hero}>
         <Col xs={24} md={12}>
           <div className={styles.heroLeft}>
-            <Tag className={styles.badge}>{homeCopy.badge}</Tag>
+            <Tag className={styles.badge}>{t("home.badge")}</Tag>
             <Title level={1} className={styles.heroTitle}>
               <span className={styles.heroTitleLinePrimary}>
-                Crafting Digital
+                {t("home.titleLinePrimary")}
               </span>
               <span className={styles.heroTitleLineSecondary}>
-                Experiences with{" "}
-                <span className={styles.heroTitleAccent}>React.</span>
+                {t("home.titleLineSecondaryPrefix")}{" "}
+                <span className={styles.heroTitleAccent}>{t("home.titleAccent")}</span>
               </span>
             </Title>
             <Paragraph className={styles.heroParagraph}>
-              {homeCopy.subtitle}
+              {t("home.subtitle")}
             </Paragraph>
             <Space wrap size={12} className={styles.heroActions}>
               <Link to="/projects">
                 <Button type="primary" className={styles.primaryButton}>
-                  {homeCopy.ctaPrimary} <ArrowRightOutlined />
+                  {t("home.ctaPrimary")} <ArrowRightOutlined />
                 </Button>
               </Link>
               <Link to="/resume">
-                <Button className={styles.resumeButton}>{homeCopy.ctaSecondary}</Button>
+                <Button className={styles.resumeButton}>{t("home.ctaSecondary")}</Button>
               </Link>
             </Space>
             <Space wrap size={10} className={styles.stackRow}>
               <Typography.Text className={styles.stackLabel}>
-                {homeCopy.stackLabel}
+                {t("home.stackLabel")}
               </Typography.Text>
-              {homeCopy.stack.map((tech) => (
+              {TECH_STACK.map((tech) => (
                 <Tag key={tech} className={styles.stackTag}>
                   {tech}
                 </Tag>
@@ -68,15 +86,15 @@ export const HomePage = () => {
                     "../../assets/hero.png",
                     import.meta.url,
                   ).toString()}
-                  alt="Hero portrait"
+                  alt={t("home.heroImageAlt")}
                 />
               </div>
               <div className={styles.heroImageBadge}>
                 <span className={styles.heroImageBadgeValue}>
-                  {homeCopy.statValue}
+                  {COMPLETED_PROJECTS}
                 </span>
                 <span className={styles.heroImageBadgeLabel}>
-                  {homeCopy.statLabel}
+                  {t("home.statLabel")}
                 </span>
               </div>
             </div>
@@ -85,7 +103,7 @@ export const HomePage = () => {
       </Row>
 
       <Row gutter={[16, 16]} className={styles.skillsRow}>
-        {homeCopy.cards.map((card) => (
+        {cards.map((card) => (
           <Col xs={24} md={8} key={card.title}>
             <Card variant="borderless" className={styles.skillCard}>
               <div className={styles.skillCardBody}>
@@ -111,10 +129,10 @@ export const HomePage = () => {
         <div className={styles.bannerBackground} />
         <div className={styles.bannerContent}>
           <Title level={2} className={styles.bannerTitle}>
-            {homeCopy.bannerTitle}
+            {t("home.bannerTitle")}
           </Title>
           <Paragraph className={styles.bannerSubtitle}>
-            {homeCopy.bannerSubtitle}
+            {t("home.bannerSubtitle")}
           </Paragraph>
         </div>
       </div>

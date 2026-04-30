@@ -1,22 +1,31 @@
 import { Card, Space, Tag, Typography } from 'antd'
 import { PureComponent } from 'react'
-import { experienceHighlights } from './const'
+import { withTranslation, type WithTranslation } from 'react-i18next'
 import styles from './styles.module.css'
 
 const { Title, Paragraph } = Typography
 
-export class ExperiencePage extends PureComponent {
+class ExperiencePageView extends PureComponent<WithTranslation> {
   render() {
+    const { t } = this.props
+    const highlights = [
+      t('experience.tagReact'),
+      t('experience.tagTypeScript'),
+      t('experience.tagUiSystems'),
+      t('experience.tagPerformance'),
+      t('experience.tagAccessibility'),
+    ]
+
     return (
       <Card variant="borderless" className={styles.card}>
         <Title level={2} className={styles.title}>
-          Experience
+          {t('experience.title')}
         </Title>
         <Paragraph type="secondary" className={styles.subtitle}>
-          Add your roles, companies, impact metrics, and the systems you’ve owned.
+          {t('experience.subtitle')}
         </Paragraph>
         <Space wrap size={10}>
-          {experienceHighlights.map((item) => (
+          {highlights.map((item) => (
             <Tag key={item} className={styles.tag}>
               {item}
             </Tag>
@@ -26,4 +35,6 @@ export class ExperiencePage extends PureComponent {
     )
   }
 }
+
+export const ExperiencePage = withTranslation()(ExperiencePageView)
 

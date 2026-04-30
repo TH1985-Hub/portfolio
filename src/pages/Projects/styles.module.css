@@ -1,9 +1,323 @@
-.root {
-  width: 100%;
+/* .root { */
+  /* width: 100%; */
+/* } */
+/*  */
+/* .intro { */
+  /* margin-bottom: 0; */
+  /* max-width: 720px; */
+/* } */
+
+/* Container */
+.container {
+  min-height: 100vh;
+  background: var(--app-bg);
 }
 
-.intro {
-  margin-bottom: 0;
-  max-width: 720px;
+/* Hero Section */
+.heroSection {
+  padding: 80px 80px 60px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
 }
 
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 30%, var(--app-accent-2), transparent 50%);
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--app-surface);
+  padding: 6px 16px;
+  border-radius: 40px;
+  margin-bottom: 24px;
+  border: 1px solid var(--app-border);
+}
+
+.badgeDot {
+  width: 8px;
+  height: 8px;
+  background: var(--app-accent);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+.badgeText {
+  color: var(--app-accent);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.heroTitle {
+  color: var(--app-text) !important;
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -1px;
+  margin-bottom: 16px !important;
+}
+
+.heroDescription {
+  color: var(--app-text-muted) !important;
+  font-size: 18px !important;
+  line-height: 1.5 !important;
+}
+
+/* Projects Grid */
+.projectsSection {
+  padding: 20px 80px 60px;
+}
+
+/* Project Card - EXACT match to screenshot */
+.projectCard {
+  background: var(--app-surface) !important;
+  border: 1px solid var(--app-border) !important;
+  border-radius: 16px !important;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.projectCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--app-accent) !important;
+  box-shadow: var(--app-shadow);
+}
+
+/* Gradient image area - exactly like screenshot */
+.projectImage {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Gradient colors matching screenshot exactly */
+.projectImageNexus {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.projectImageVapor {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.projectImageLumina {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.projectImageAtmosphere {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.imageTitle {
+  font-size: 28px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.projectTitle {
+  color: var(--app-text) !important;
+  margin-bottom: 12px !important;
+  font-size: 22px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.3px;
+}
+
+.projectDescription {
+  color: var(--app-text-muted) !important;
+  line-height: 1.6 !important;
+  font-size: 14px !important;
+  margin-bottom: 16px !important;
+  min-height: 70px;
+}
+
+.projectTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.projectTag {
+  background: var(--app-surface-2) !important;
+  border: 1px solid var(--app-border) !important;
+  color: var(--app-text-muted) !important;
+  border-radius: 6px !important;
+  padding: 4px 12px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+.cardActions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--app-border);
+}
+
+.actionButton {
+  flex: 1;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+}
+
+/* CTA Section - exact match to screenshot */
+.ctaSection {
+  margin: 40px 0 0;
+  background: var(--app-surface);
+  border-radius: 24px;
+  padding: 64px;
+  text-align: center;
+  border: 1px solid var(--app-border);
+}
+
+.ctaTitle {
+  color: var(--app-text) !important;
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  margin-bottom: 16px !important;
+  letter-spacing: -0.5px;
+}
+
+.ctaDescription {
+  color: var(--app-text-muted) !important;
+  font-size: 18px !important;
+  max-width: 600px;
+  margin: 0 auto 32px !important;
+  line-height: 1.5 !important;
+}
+
+.ctaButton {
+  background: var(--app-accent) !important;
+  border: none !important;
+  padding: 12px 32px !important;
+  height: auto !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.emptyIcon {
+  font-size: 64px;
+  color: var(--app-text-muted);
+  margin-bottom: 24px;
+}
+
+.emptyTitle {
+  color: var(--app-text) !important;
+  margin-bottom: 8px !important;
+}
+
+.emptyDescription {
+  color: var(--app-text-muted) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 60px 20px 40px;
+  }
+  
+  .heroTitle {
+    font-size: 32px !important;
+  }
+  
+  .heroDescription {
+    font-size: 16px !important;
+  }
+  
+  .projectsSection {
+    padding: 20px 20px 40px;
+  }
+  
+  .projectDescription {
+    min-height: auto;
+  }
+  
+  .ctaSection {
+    padding: 40px 20px;
+  }
+  
+  .ctaTitle {
+    font-size: 28px !important;
+  }
+  
+  .ctaDescription {
+    font-size: 16px !important;
+  }
+  
+  .imageTitle {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 24px !important;
+  }
+  
+  .imageTitle {
+    font-size: 18px;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.projectCard {
+  animation: fadeInUp 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.projectCard:nth-child(1) { animation-delay: 0s; }
+.projectCard:nth-child(2) { animation-delay: 0.1s; }
+.projectCard:nth-child(3) { animation-delay: 0.2s; }
+.projectCard:nth-child(4) { animation-delay: 0.3s; }

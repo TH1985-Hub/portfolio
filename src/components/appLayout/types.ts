@@ -7,4 +7,6 @@ export type AppLayoutViewProps = {
   showGeminiWidget: boolean;
   themeMode: "dark" | "light";
   onToggleThemeMode: () => void;
+  lang: 'am' | 'en' | 'ru';
+  onChangeLanguage: (lang: 'am' | 'en' | 'ru') => void;
 };

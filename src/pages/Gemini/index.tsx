@@ -2,13 +2,9 @@ import { FileTextOutlined, MessageOutlined, SendOutlined } from '@ant-design/ico
 import { Button, Card, Input, Typography, message } from 'antd'
 import { Component, type ChangeEvent, type KeyboardEvent } from 'react'
 import ReactMarkdown from 'react-markdown'
+import { withTranslation, type WithTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import {
-  ERROR_MESSAGE,
-  INITIAL_BOT_MESSAGE,
-  INPUT_PLACEHOLDER,
-  THINKING_MESSAGE,
-} from './const'
+import { createInitialBotMessage } from './const'
 import styles from './styles.module.css'
 import type { ChatState, Message } from './types'
 import { fetchBotResponse } from './utils'
@@ -16,13 +12,13 @@ import { fetchBotResponse } from './utils'
 const { Text, Paragraph } = Typography
 const { TextArea } = Input
 
-export class GeminiPage extends Component<{}, ChatState> {
-  constructor(props: {}) {
+class GeminiPageView extends Component<WithTranslation, ChatState> {
+  constructor(props: WithTranslation) {
     super(props)
     this.state = {
       input: '',
       loading: false,
-      messages: [INITIAL_BOT_MESSAGE],
+      messages: [createInitialBotMessage(props.t)],
     }
   }
 
@@ -54,7 +50,7 @@ export class GeminiPage extends Component<{}, ChatState> {
         loading: false,
       }))
     } catch (error) {
-      message.error(ERROR_MESSAGE)
+      message.error(this.props.t('gemini.error'))
       this.setState({ loading: false })
     }
   }
@@ -64,7 +60,7 @@ export class GeminiPage extends Component<{}, ChatState> {
   }
 
   handleShowResume = async () => {
-    await this.submitPrompt('Show my saved resume in markdown.')
+    await this.submitPrompt(this.props.t('gemini.resumePrompt'))
   }
 
   handleInputKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -75,19 +71,19 @@ export class GeminiPage extends Component<{}, ChatState> {
   }
 
   render() {
+    const { t } = this.props
     const { input, loading, messages } = this.state
 
     return (
       <div className={styles.page}>
         <section className={styles.hero}>
           <div className={styles.heroCopy}>
-            <Typography.Text className={styles.badge}>Gemini Chat</Typography.Text>
+            <Typography.Text className={styles.badge}>{t('gemini.badge')}</Typography.Text>
             <Typography.Title level={1} className={styles.title}>
-              Ask Gemini About the Portfolio
+              {t('gemini.title')}
             </Typography.Title>
             <Typography.Paragraph className={styles.description}>
-              Chat here about projects, experience, or ask Gemini to bring the saved
-              resume directly into the conversation.
+              {t('gemini.description')}
             </Typography.Paragraph>
           </div>
         </section>
@@ -96,11 +92,10 @@ export class GeminiPage extends Component<{}, ChatState> {
           <div className={styles.cardHeader}>
             <div>
               <Typography.Text strong className={styles.cardTitle}>
-                <MessageOutlined /> Gemini Conversation
+                <MessageOutlined /> {t('gemini.conversationTitle')}
               </Typography.Text>
               <Typography.Paragraph className={styles.cardSubtitle}>
-                Try prompts like “show my resume”, “summarize my experience”, or
-                “write a short recruiter intro”.
+                {t('gemini.conversationSubtitle')}
               </Typography.Paragraph>
             </div>
           </div>
@@ -115,12 +110,12 @@ export class GeminiPage extends Component<{}, ChatState> {
               }}
               loading={loading}
             >
-              Show Saved Resume
+              {t('gemini.showSavedResume')}
             </Button>
             <Paragraph className={styles.helperText}>
-              The resume itself now lives on the separate{' '}
+              {t('gemini.resumeHintPrefix')}
               <Link to="/resume" className={styles.helperLink}>
-                Resume page
+                {t('gemini.resumePageLink')}
               </Link>
               .
             </Paragraph>
@@ -140,7 +135,7 @@ export class GeminiPage extends Component<{}, ChatState> {
 
             {loading ? (
               <div className={styles.loader}>
-                <Text type="secondary">{THINKING_MESSAGE}</Text>
+                <Text type="secondary">{t('gemini.thinking')}</Text>
               </div>
             ) : null}
           </div>
@@ -150,7 +145,7 @@ export class GeminiPage extends Component<{}, ChatState> {
               value={input}
               onChange={this.handleInputChange}
               onKeyDown={this.handleInputKeyDown}
-              placeholder={INPUT_PLACEHOLDER}
+              placeholder={t('gemini.inputPlaceholder')}
               disabled={loading}
               autoSize={{ minRows: 3, maxRows: 6 }}
             />
@@ -163,7 +158,7 @@ export class GeminiPage extends Component<{}, ChatState> {
               }}
               loading={loading}
             >
-              Send
+              {t('gemini.send')}
             </Button>
           </div>
         </Card>
@@ -172,4 +167,5 @@ export class GeminiPage extends Component<{}, ChatState> {
   }
 }
 
+export const GeminiPage = withTranslation()(GeminiPageView)
 export { GeminiPage as Gemini }

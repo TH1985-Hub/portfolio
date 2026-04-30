@@ -8,21 +8,30 @@ import {
 } from "@ant-design/icons";
 import { Button, Layout, Menu, Space, Typography } from "antd";
 import { PureComponent, useContext } from "react";
+import { useTranslation, withTranslation, type WithTranslation } from "react-i18next";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { LanguageSwitcher } from "@/components/common/languageSwitcher";
 import { GeminiWidget } from "../../pages/Gemini/widget";
 
 import { ThemeModeContext } from "@/App";
-import { menuItems } from "./const";
 import styles from "./styles.module.css";
 import type { AppLayoutViewProps } from "./types";
 import { getSelectedMenuKeys, shouldShowGeminiWidget } from "./utils";
 
 const { Header, Content, Footer } = Layout;
 
-class AppLayoutView extends PureComponent<AppLayoutViewProps> {
+class AppLayoutView extends PureComponent<AppLayoutViewProps & WithTranslation> {
   render() {
     const selectedKeys = getSelectedMenuKeys(this.props.pathname);
     const { showGeminiWidget } = this.props;
+    const { t } = this.props;
+    const menuItems = [
+      { key: "/", label: t("layout.menuHome") },
+      { key: "/gemini", label: t("layout.menuGemini") },
+      { key: "/projects", label: t("layout.menuProjects") },
+      { key: "/experience", label: t("layout.menuExperience") },
+      { key: "/contact", label: t("layout.menuContact") },
+    ];
 
     return (
       <Layout className={styles.root}>
@@ -40,8 +49,12 @@ class AppLayoutView extends PureComponent<AppLayoutViewProps> {
             className={styles.menu}
           />
           <Space size={10} className={styles.headerActions}>
+            <LanguageSwitcher
+              lang={this.props.lang}
+              onChange={this.props.onChangeLanguage}
+            />
             <Button
-              aria-label="Toggle theme"
+              aria-label={t("layout.toggleTheme")}
               className={styles.themeButton}
               icon={
                 this.props.themeMode === "dark" ? (
@@ -71,18 +84,18 @@ class AppLayoutView extends PureComponent<AppLayoutViewProps> {
                 type="secondary"
                 className={styles.footerCopyright}
               >
-                © {new Date().getFullYear()} Built with React & TypeScript
+                © {new Date().getFullYear()} {t("layout.builtWith")}
               </Typography.Text>
             </div>
             <Space size="middle" className={styles.footerLinks}>
               <Typography.Link href="https://github.com" target="_blank">
-                <GithubOutlined /> GitHub
+                <GithubOutlined /> {t("layout.github")}
               </Typography.Link>
               <Typography.Link href="https://linkedin.com" target="_blank">
-                <LinkedinOutlined /> LinkedIn
+                <LinkedinOutlined /> {t("layout.linkedIn")}
               </Typography.Link>
               <Typography.Link href="https://x.com" target="_blank">
-                <TwitterOutlined /> Twitter
+                <TwitterOutlined /> {t("layout.twitter")}
               </Typography.Link>
             </Space>
           </div>
@@ -92,17 +105,20 @@ class AppLayoutView extends PureComponent<AppLayoutViewProps> {
   }
 }
 
+const LocalizedAppLayoutView = withTranslation()(AppLayoutView);
+
 export function AppLayout() {
   const location = useLocation();
   const navigate = useNavigate();
   const theme = useContext(ThemeModeContext);
+  const { i18n } = useTranslation();
 
   const [isChatOpen, setIsChatOpen] = useState(false);
 
   const showGeminiWidget = shouldShowGeminiWidget(location.pathname);
 
   return (
-    <AppLayoutView
+    <LocalizedAppLayoutView
       pathname={location.pathname}
       showGeminiWidget={showGeminiWidget}
       isChatOpen={isChatOpen}
@@ -114,6 +130,10 @@ export function AppLayout() {
       themeMode={theme?.mode ?? "dark"}
       onToggleThemeMode={() => {
         theme?.toggleMode();
+      }}
+      lang={i18n.language === "am" || i18n.language === "ru" ? i18n.language : "en"}
+      onChangeLanguage={(lang) => {
+        void i18n.changeLanguage(lang);
       }}
     />
   );

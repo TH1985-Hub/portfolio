@@ -1,0 +1,7 @@
+.switcherButton {
+  border-radius: 999px;
+  border: 1px solid var(--app-border);
+  background: var(--app-surface);
+  color: var(--app-text);
+  font-weight: 600;
+}

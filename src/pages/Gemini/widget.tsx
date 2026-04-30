@@ -7,14 +7,9 @@ import {
 import { Button, Card, Input, Space, Spin, Typography, message } from 'antd'
 import { useEffect, useRef, useState, type ChangeEvent } from 'react'
 import ReactMarkdown from 'react-markdown'
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import {
-  CHAT_TITLE,
-  ERROR_MESSAGE,
-  INITIAL_BOT_MESSAGE,
-  INPUT_PLACEHOLDER,
-  THINKING_MESSAGE,
-} from './const'
+import { createInitialBotMessage } from './const'
 import styles from './widget.module.css'
 import type { Message } from './types'
 import { fetchBotResponse } from './utils'
@@ -56,11 +51,16 @@ function AssistantMark() {
 }
 
 export function GeminiWidget() {
+  const { t, i18n } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
-  const [messages, setMessages] = useState<Message[]>([INITIAL_BOT_MESSAGE])
+  const [messages, setMessages] = useState<Message[]>(() => [createInitialBotMessage(t)])
   const messagesRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    setMessages([createInitialBotMessage(t)])
+  }, [i18n.language, t])
 
   useEffect(() => {
     if (!isOpen) {
@@ -101,7 +101,7 @@ export function GeminiWidget() {
       const botMsg: Message = { role: 'bot', text: response }
       setMessages((prev) => [...prev, botMsg])
     } catch (error) {
-      message.error(ERROR_MESSAGE)
+      message.error(t('gemini.error'))
     } finally {
       setLoading(false)
     }
@@ -113,23 +113,23 @@ export function GeminiWidget() {
         <Card id="gemini-widget-panel" className={styles.panel} bordered={false}>
           <div className={styles.panelHeader}>
             <div className={styles.panelCopy}>
-              <Typography.Text className={styles.badge}>AI Assistant</Typography.Text>
+              <Typography.Text className={styles.badge}>{t('gemini.widgetBadge')}</Typography.Text>
               <Typography.Title level={5} className={styles.title}>
-                <RobotOutlined /> {CHAT_TITLE}
+                <RobotOutlined /> {t('gemini.widgetChatTitle')}
               </Typography.Title>
               <Typography.Paragraph className={styles.subtitle}>
-                Ask about projects, experience, or this portfolio.
+                {t('gemini.widgetSubtitle')}
               </Typography.Paragraph>
             </div>
 
             <Space size={8} className={styles.headerActions}>
               <Link to="/gemini" className={styles.pageLink}>
                 <Button type="text" className={styles.openPageButton}>
-                  Open page <ArrowRightOutlined />
+                  {t('gemini.widgetOpenPage')} <ArrowRightOutlined />
                 </Button>
               </Link>
               <Button
-                aria-label="Close Gemini assistant"
+                aria-label={t('gemini.widgetCloseAria')}
                 type="text"
                 icon={<CloseOutlined />}
                 className={styles.closeButton}
@@ -153,7 +153,7 @@ export function GeminiWidget() {
             {loading ? (
               <div className={styles.loader}>
                 <Spin size="small" />
-                <Typography.Text type="secondary">{THINKING_MESSAGE}</Typography.Text>
+                <Typography.Text type="secondary">{t('gemini.thinking')}</Typography.Text>
               </div>
             ) : null}
           </div>
@@ -165,7 +165,7 @@ export function GeminiWidget() {
               onPressEnter={() => {
                 void handleSend()
               }}
-              placeholder={INPUT_PLACEHOLDER}
+              placeholder={t('gemini.inputPlaceholder')}
               disabled={loading}
               size="large"
             />
@@ -178,7 +178,7 @@ export function GeminiWidget() {
               }}
               loading={loading}
             >
-              Send
+              {t('gemini.send')}
             </Button>
           </div>
         </Card>
@@ -190,8 +190,8 @@ export function GeminiWidget() {
         onClick={toggleOpen}
         aria-expanded={isOpen}
         aria-controls="gemini-widget-panel"
-        aria-label={isOpen ? 'Close Gemini assistant' : 'Open Gemini assistant'}
-        title={isOpen ? 'Close Gemini assistant' : 'Open Gemini assistant'}
+        aria-label={isOpen ? t('gemini.widgetCloseAria') : t('gemini.widgetOpenAria')}
+        title={isOpen ? t('gemini.widgetCloseAria') : t('gemini.widgetOpenAria')}
       >
         <span className={styles.triggerHalo} aria-hidden="true" />
         <span className={styles.triggerRing} aria-hidden="true" />

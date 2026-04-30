@@ -1,0 +1,30 @@
+---
+name: i18n-dictionary-manager
+description: Skill for creating and managing multi-language dictionaries (AM, EN, RU).
+
+# i18n Dictionary Manager Skill
+
+## Goal
+To provide a standardized way of handling translations for the portfolio project (Resume, Gemini,Home, Project,Experience... pages,).
+
+## Instructions
+- **File Creation**: For every component with text, create a `locales.ts` in its folder.
+- **Language Coverage**: Every key MUST have `am`, `en`, and `ru` versions.
+- **Translation Strategy**: 
+    - **Resume/CV**: Use formal and professional vocabulary (e.g., "Experience" -> "Աշխատանքային փորձ" -> "Опыт работы").
+    - **UI/Action**: Use concise, action-oriented terms (e.g., "Մասին" -> "About" -> "Онас").
+- **Types**: Always export a `ComponentLocales` type to ensure the dictionary is type-safe.
+- **Source Language**: Use English (en) as the default base for all translations.
+- **Auto-Mapping**: Detect English text in JSX and map it to the en key in locales.ts, then generate am and ru.
+
+## Structure Pattern
+```typescript
+export type ComponentLocales = {
+  [key: string]: string;
+};
+
+export const LOCALES: Record<'am' | 'en' | 'ru', ComponentLocales> = {
+  am: { /* Armenian translations */ },
+  en: { /* English translations */ },
+  ru: { /* Russian translations */ }
+};

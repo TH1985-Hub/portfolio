@@ -1,5 +1,6 @@
 import { App as AntdApp, Button, Card, Form, Input, Typography } from 'antd'
 import { PureComponent } from 'react'
+import { withTranslation, type WithTranslation } from 'react-i18next'
 import styles from './styles.module.css'
 import { contactFormDelayMs } from './const'
 import type { ContactFormValues, ContactPageViewProps } from './types'
@@ -12,7 +13,7 @@ type ContactPageViewState = {
 }
 
 class ContactPageView extends PureComponent<
-  ContactPageViewProps,
+  ContactPageViewProps & WithTranslation,
   ContactPageViewState
 > {
   state: ContactPageViewState = { submitting: false }
@@ -22,7 +23,7 @@ class ContactPageView extends PureComponent<
     try {
       await delay(contactFormDelayMs)
       this.props.notifySuccess(
-        `Thanks, ${values.name}. Hook this form to your API or form service.`,
+        this.props.t('contact.success', { name: values.name }),
       )
     } finally {
       this.setState({ submitting: false })
@@ -30,12 +31,15 @@ class ContactPageView extends PureComponent<
   }
 
   render() {
+    const { t } = this.props
+
     return (
       <Card variant="borderless" className={styles.card}>
-        <Title level={2}>Contact</Title>
+        <Title level={2}>{t('contact.title')}</Title>
         <Paragraph type="secondary">
-          Wire <Typography.Text code>onFinish</Typography.Text> to EmailJS,
-          Resend, a serverless function, or your backend.
+          {t('contact.introPrefix')}
+          <Typography.Text code>onFinish</Typography.Text>
+          {t('contact.introSuffix')}
         </Paragraph>
         <Form<ContactFormValues>
           layout="vertical"
@@ -44,29 +48,29 @@ class ContactPageView extends PureComponent<
         >
           <Form.Item
             name="name"
-            label="Name"
-            rules={[{ required: true, message: 'Please enter your name' }]}
+            label={t('contact.nameLabel')}
+            rules={[{ required: true, message: t('contact.nameRequired') }]}
           >
-            <Input placeholder="Jane Doe" autoComplete="name" />
+            <Input placeholder={t('contact.namePlaceholder')} autoComplete="name" />
           </Form.Item>
           <Form.Item
             name="email"
-            label="Email"
+            label={t('contact.emailLabel')}
             rules={[
-              { required: true, message: 'Please enter your email' },
-              { type: 'email', message: 'Enter a valid email' },
+              { required: true, message: t('contact.emailRequired') },
+              { type: 'email', message: t('contact.emailInvalid') },
             ]}
           >
-            <Input placeholder="you@example.com" autoComplete="email" />
+            <Input placeholder={t('contact.emailPlaceholder')} autoComplete="email" />
           </Form.Item>
           <Form.Item
             name="message"
-            label="Message"
-            rules={[{ required: true, message: 'Please enter a message' }]}
+            label={t('contact.messageLabel')}
+            rules={[{ required: true, message: t('contact.messageRequired') }]}
           >
             <Input.TextArea
               rows={5}
-              placeholder="What would you like to build?"
+              placeholder={t('contact.messagePlaceholder')}
               className={styles.textarea}
             />
           </Form.Item>
@@ -77,7 +81,7 @@ class ContactPageView extends PureComponent<
               loading={this.state.submitting}
               block
             >
-              Send
+              {t('contact.submit')}
             </Button>
           </Form.Item>
         </Form>
@@ -86,11 +90,13 @@ class ContactPageView extends PureComponent<
   }
 }
 
+const LocalizedContactPageView = withTranslation()(ContactPageView)
+
 export function ContactPage() {
   const { message } = AntdApp.useApp()
 
   return (
-    <ContactPageView
+    <LocalizedContactPageView
       notifySuccess={(text) => {
         void message.success(text)
       }}

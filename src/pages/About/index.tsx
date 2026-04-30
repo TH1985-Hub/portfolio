@@ -1,16 +1,25 @@
 import { CheckCircleOutlined, ReadOutlined } from "@ant-design/icons";
 import { Card, List, Typography } from "antd";
 import { PureComponent } from "react";
-import { aboutParagraphs, educationItems, strengths } from "./const";
+import { withTranslation, type WithTranslation } from "react-i18next";
 import styles from "./styles.module.css";
 
 const { Title, Paragraph } = Typography;
 
-export class AboutPage extends PureComponent {
+class AboutPageView extends PureComponent<WithTranslation> {
   render() {
+    const { t } = this.props;
+    const aboutParagraphs = [t("about.paragraph1"), t("about.paragraph2")];
+    const educationItems = [
+      t("about.education1"),
+      t("about.education2"),
+      t("about.education3"),
+    ];
+    const strengths = [t("about.strength1"), t("about.strength2"), t("about.strength3")];
+
     return (
       <Card variant="borderless" className={styles.card}>
-        <Title level={2}>About</Title>
+        <Title level={2}>{t("about.title")}</Title>
 
         {aboutParagraphs.map((paragraph) => (
           <Paragraph key={paragraph} type="secondary" className={styles.paragraph}>
@@ -19,7 +28,7 @@ export class AboutPage extends PureComponent {
         ))}
 
         <Title level={4} className={styles.sectionTitle}>
-          Education & Journey
+          {t("about.sectionEducation")}
         </Title>
         <List
           dataSource={educationItems}
@@ -32,7 +41,7 @@ export class AboutPage extends PureComponent {
         />
 
         <Title level={4} className={styles.sectionTitle}>
-          What I bring
+          {t("about.sectionStrengths")}
         </Title>
         <List
           dataSource={strengths}
@@ -47,3 +56,5 @@ export class AboutPage extends PureComponent {
     );
   }
 }
+
+export const AboutPage = withTranslation()(AboutPageView);

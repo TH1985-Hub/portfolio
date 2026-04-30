@@ -1,8 +1,5 @@
 import { projects } from '@/data/projects'
 import { profileContent } from '@/content/profile'
-import { strengths } from '@/pages/About/const'
-import { experienceHighlights } from '@/pages/Experience/const'
-import { homeCopy } from '@/pages/Home/const'
 import resumeMarkdown from '@/content/resume.md?raw'
 import { generateGeminiContent } from '@/services/gemini'
 
@@ -17,12 +14,12 @@ import { generateGeminiContent } from '@/services/gemini'
   return [
     'Portfolio owner: Tatevik Harutyunyan',
     'Role: Frontend Engineer',
-    `Professional summary: ${homeCopy.subtitle}`,
+    `Professional summary: ${profileContent.shortSummary}`,
     `Personal background: ${profileContent.portfolioFacts.join(' | ')}`,
-    `Core stack: ${homeCopy.stack.join(', ')}`,
-    `Portfolio stat: ${homeCopy.statValue} projects completed`,
-    `Strengths: ${strengths.join(' | ')}`,
-    `Experience focus: ${experienceHighlights.join(', ')}`,
+    'Core stack: React, TypeScript, Ant Design',
+    'Portfolio stat: 15+ projects completed',
+    `Strengths: ${profileContent.strengths.join(' | ')}`,
+    'Experience focus: React, TypeScript, UI Systems, Performance, Accessibility',
     `Projects:\n${projectLines}`,
   ].join('\n')
 }
