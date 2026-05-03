@@ -27,11 +27,11 @@ export const HomePage = () => {
       description: t("home.reactMasteryDescription"),
     },
     {
-      title: t("home.typeScript"),
+      title: t("common.typeScript"),
       description: t("home.typeScriptDescription"),
     },
     {
-      title: t("home.uiSystems"),
+      title: t("common.uiSystems"),
       description: t("home.uiSystemsDescription"),
     },
   ];
@@ -61,7 +61,7 @@ export const HomePage = () => {
                 </Button>
               </Link>
               <Link to="/resume">
-                <Button className={styles.resumeButton}>{t("home.ctaSecondary")}</Button>
+                <Button className={styles.resumeButton}>{t("common.resume")}</Button>
               </Link>
             </Space>
             <Space wrap size={10} className={styles.stackRow}>

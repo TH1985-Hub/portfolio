@@ -1,34 +1,28 @@
 ---
-
-**Ֆայլի անունը:** `.cursor/rules/enforce-i18n.mdc`
-
-```markdown
----
-description: Rule to enforce i18n-dictionary-manager usage and prevent hardcoded text.
+description: Rule to enforce global JSON-based i18n management with a mandatory review step.
 globs: "src/components/**/*.tsx, src/pages/**/*.tsx"
 alwaysApply: true
 ---
 
-# Enforce i18n & Language Selection Rule
+# Enforce Centralized i18n & Review
 
 ## The Rule
-You are strictly forbidden from leaving raw text strings (Armenian, English, or Russian) inside JSX elements. Every piece of text must be externalized using the `i18n-dictionary-manager` skill.
+You are strictly forbidden from leaving raw text strings in JSX. All text must be moved to the central JSON files in `src/locales/`.
 
 ## Requirements
-- **Mandatory Link**: If a `.tsx` file contains text, check for a `locales.ts` file in the same folder. If missing, create it using the `i18n-dictionary-manager` skill.
-- **Component Access**: Use the pattern `{LOCALES[this.props.lang].key}`.
-- **Class Component Integration**: Ensure the component receives `lang` as a prop from the parent or global state.
-- **Visuals**: When creating a `LanguageSelector`, use Ant Design components and include icons/emojis (🇦🇲, 🇺🇸, 🇷🇺).
-- **Default State**։ The application must initialize with lang: 'en'.
-- **UI Component**: Create a LanguageSwitcher component in src/components/common/.
-- **Interactions**: Use Ant Design Dropdown or Button.Group with icons/emojis (🇦🇲, 🇺🇸, 🇷🇺) to allow the user to toggle this.props.lang.
-
-## Technical Implementation
-- **Initialization**: Use `i18n.changeLanguage(lang)` to toggle languages.
-- **Provider**: Ensure the root `main.tsx` is wrapped in `I18nextProvider` or uses the initialized `i18n` instance.
-- **Class Usage**: Since we use Class Components, access the `t` function via a Higher-Order Component (HOC) like `withTranslation()` or pass the `t` function down as a prop.
-
+- **Global Check**: Before adding text, check `src/locales/en.json` to see if a similar key already exists to avoid duplicates.
+- **Review Step (Mandatory)**: Before modifying any files, you MUST:
+    1. Propose the new JSON key name (namespaced).
+    2. Show the proposed translations for **AM**, **EN**, and **RU**.
+    3. Wait for the user to confirm or edit the translations.
+- **Implementation**: Access translations in Class Components via `{LOCALES[this.props.lang].namespace.key}`.
 
 ## Action Trigger
-- **Existing Text**: If you encounter existing Armenian text in pages like `Resume.tsx` or `Gemini.tsx`, immediately trigger a refactor to move them to `locales.ts`.
-- **New Features**: Never generate new UI without a corresponding `locales.ts` update.
+- **On Detection**: If hardcoded text is found in pages like `Resume.tsx`, `Experience.tsx`, or `Gemini.tsx`, stop and say:
+  *"I've detected hardcoded text. I propose adding the following to the global store. Should I apply this?"*
+- **Initialization**: Ensure the application default state is `lang: 'en'`.
+- **Icons**: When suggesting a `LanguageSwitcher`, use (🇦🇲, 🇺🇸, 🇷🇺).
+
+## Technical Implementation
+- **Simultaneous Update**: Always update all three JSON files at once to keep them in sync.
+- **Vite/React**: Ensure imports in components point to the central `src/locales/index.ts`.

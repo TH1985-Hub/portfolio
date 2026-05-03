@@ -17,7 +17,7 @@ class ResumePageView extends PureComponent<WithTranslation> {
           <div className={styles.heroCopy}>
             <Typography.Text className={styles.badge}>{t('resume.badge')}</Typography.Text>
             <Typography.Title level={1} className={styles.title}>
-              {t('resume.title')}
+              {t('common.resume')}
             </Typography.Title>
             <Typography.Paragraph className={styles.description}>
               {t('resume.description')}

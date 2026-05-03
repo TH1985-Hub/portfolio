@@ -1,0 +1,24 @@
+
+---
+name: github-smart-push
+description: Skill to automate git add, commit, and push process with mandatory user confirmation and professional messages.
+---
+
+# GitHub Smart Push Skill
+
+## Goal
+To streamline the workflow of pushing code changes to GitHub while ensuring manual oversight and professional commit history.
+
+## Instructions
+- **Change Analysis**: When the user finishes a task, analyze the modified files using `git status` or GitHub MCP.
+- **Commit Message Proposing**: Generate a professional "Conventional Commit" message based on the actual code changes (e.g., `feat(i18n): centralize resume translations`).
+- **Confirmation Step (Mandatory)**: Before pushing, you MUST ask the user:
+    - "I have detected these changes: [List of files]. I propose the commit message: '[Message]'. Should I push this to GitHub?"
+- **Execution**: Only after explicit confirmation ("Yes", "Go ahead", "Push"), execute the push using GitHub MCP or integrated git tools.
+
+## Technical Execution
+- Use `github.push_files` or local git execution if MCP is limited.
+- Always ensure the branch is correct (default to the current working branch).
+
+## Action Trigger
+- Activates when the user says "Push my changes", "Save this to GitHub", or "I'm done with this task".

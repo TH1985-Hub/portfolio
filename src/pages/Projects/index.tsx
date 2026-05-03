@@ -100,7 +100,7 @@ class ProjectsView extends Component<WithTranslation, ProjectsState> {
                 icon={<GithubOutlined />}
                 onClick={() => this.handleViewGithub(project)}
               >
-                {this.props.t('projects.github')}
+                {this.props.t('common.github')}
               </Button>
             </div>
           </div>
@@ -119,7 +119,7 @@ class ProjectsView extends Component<WithTranslation, ProjectsState> {
           <div className={styles.heroContent}>
             <div className={styles.heroBadge}>
               <span className={styles.badgeDot}></span>
-              <span className={styles.badgeText}>{this.props.t('projects.badge')}</span>
+              <span className={styles.badgeText}>{this.props.t('common.projects')}</span>
             </div>
             <Title className={styles.heroTitle}>
               {this.props.t('projects.heroTitle')}

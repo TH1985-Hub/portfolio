@@ -158,7 +158,7 @@ class GeminiPageView extends Component<WithTranslation, ChatState> {
               }}
               loading={loading}
             >
-              {t('gemini.send')}
+              {t('common.send')}
             </Button>
           </div>
         </Card>

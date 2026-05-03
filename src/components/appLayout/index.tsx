@@ -28,9 +28,9 @@ class AppLayoutView extends PureComponent<AppLayoutViewProps & WithTranslation> 
     const menuItems = [
       { key: "/", label: t("layout.menuHome") },
       { key: "/gemini", label: t("layout.menuGemini") },
-      { key: "/projects", label: t("layout.menuProjects") },
-      { key: "/experience", label: t("layout.menuExperience") },
-      { key: "/contact", label: t("layout.menuContact") },
+      { key: "/projects", label: t("common.projects") },
+      { key: "/experience", label: t("common.experience") },
+      { key: "/contact", label: t("common.contact") },
     ];
 
     return (
@@ -89,7 +89,7 @@ class AppLayoutView extends PureComponent<AppLayoutViewProps & WithTranslation> 
             </div>
             <Space size="middle" className={styles.footerLinks}>
               <Typography.Link href="https://github.com" target="_blank">
-                <GithubOutlined /> {t("layout.github")}
+                <GithubOutlined /> {t("common.github")}
               </Typography.Link>
               <Typography.Link href="https://linkedin.com" target="_blank">
                 <LinkedinOutlined /> {t("layout.linkedIn")}

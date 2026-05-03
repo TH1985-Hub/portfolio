@@ -10,8 +10,8 @@ class ExperiencePageView extends PureComponent<WithTranslation> {
     const { t } = this.props
     const highlights = [
       t('experience.tagReact'),
-      t('experience.tagTypeScript'),
-      t('experience.tagUiSystems'),
+      t('common.typeScript'),
+      t('common.uiSystems'),
       t('experience.tagPerformance'),
       t('experience.tagAccessibility'),
     ]
@@ -19,7 +19,7 @@ class ExperiencePageView extends PureComponent<WithTranslation> {
     return (
       <Card variant="borderless" className={styles.card}>
         <Title level={2} className={styles.title}>
-          {t('experience.title')}
+          {t('common.experience')}
         </Title>
         <Paragraph type="secondary" className={styles.subtitle}>
           {t('experience.subtitle')}

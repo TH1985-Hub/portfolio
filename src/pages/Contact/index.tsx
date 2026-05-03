@@ -35,7 +35,7 @@ class ContactPageView extends PureComponent<
 
     return (
       <Card variant="borderless" className={styles.card}>
-        <Title level={2}>{t('contact.title')}</Title>
+        <Title level={2}>{t('common.contact')}</Title>
         <Paragraph type="secondary">
           {t('contact.introPrefix')}
           <Typography.Text code>onFinish</Typography.Text>
@@ -81,7 +81,7 @@ class ContactPageView extends PureComponent<
               loading={this.state.submitting}
               block
             >
-              {t('contact.submit')}
+              {t('common.send')}
             </Button>
           </Form.Item>
         </Form>

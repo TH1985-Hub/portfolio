@@ -1,30 +1,34 @@
 ---
 name: i18n-dictionary-manager
-description: Skill for creating and managing multi-language dictionaries (AM, EN, RU).
+description: Skill for managing the SINGLE global translation directory (AM, EN, RU).
+---
 
-# i18n Dictionary Manager Skill
+# Global i18n Dictionary Manager
 
 ## Goal
-To provide a standardized way of handling translations for the portfolio project (Resume, Gemini,Home, Project,Experience... pages,).
+To maintain one single source of truth for all Portfolio translations in `src/locales/`.
 
 ## Instructions
-- **File Creation**: For every component with text, create a `locales.ts` in its folder.
-- **Language Coverage**: Every key MUST have `am`, `en`, and `ru` versions.
-- **Translation Strategy**: 
-    - **Resume/CV**: Use formal and professional vocabulary (e.g., "Experience" -> "Աշխատանքային փորձ" -> "Опыт работы").
-    - **UI/Action**: Use concise, action-oriented terms (e.g., "Մասին" -> "About" -> "Онас").
-- **Types**: Always export a `ComponentLocales` type to ensure the dictionary is type-safe.
-- **Source Language**: Use English (en) as the default base for all translations.
-- **Auto-Mapping**: Detect English text in JSX and map it to the en key in locales.ts, then generate am and ru.
+- **File Location**: All translations MUST be stored in:
+    - `src/locales/am.json`
+    - `src/locales/en.json`
+    - `src/locales/ru.json`
+    - `src/locales/index.ts` (The entry point)
+- **Namespacing**: Organize keys by page or feature using dot-notation:
+    - `resume.header.title`
+    - `gemini.chat.placeholder`
+    - `common.buttons.save`
+- **Translation Strategy**:
+    - **English (en)**: Use professional, standard vocabulary.
+    - **Armenian (am)**: Use formal literary Armenian (e.g., "Աշխատանքային փորձ").
+    - **Russian (ru)**: Use natural, professional Russian (e.g., "Опыт работы").
+- **Types**: The `index.ts` must export `LOCALES` and a `LocaleKey` type derived from `en.json`.
 
-## Structure Pattern
+## Structure Pattern (index.ts)
 ```typescript
-export type ComponentLocales = {
-  [key: string]: string;
-};
+import am from './am.json';
+import en from './en.json';
+import ru from './ru.json';
 
-export const LOCALES: Record<'am' | 'en' | 'ru', ComponentLocales> = {
-  am: { /* Armenian translations */ },
-  en: { /* English translations */ },
-  ru: { /* Russian translations */ }
-};
+export const LOCALES = { am, en, ru } as const;
+export type Language = keyof typeof LOCALES;
