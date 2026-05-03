@@ -22,7 +22,7 @@ This repo deploys to GitHub Pages with GitHub Actions.
 ## Structure
 
 - `src/app/router.tsx` — routes
-- `src/components/layout/` — shell layout
+- `src/components/appLayout/` — shell layout (header, nav, footer, i18n)
 - `src/pages/` — page sections
 - `src/data/` — typed content (e.g. projects)
 - `src/theme/antdTheme.ts` — Ant Design tokens
