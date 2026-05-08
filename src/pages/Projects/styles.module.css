@@ -1,245 +1,350 @@
-/* .root { */
-  /* width: 100%; */
-/* } */
-/*  */
-/* .intro { */
-  /* margin-bottom: 0; */
-  /* max-width: 720px; */
-/* } */
-
-/* Container */
 .container {
-  min-height: 100vh;
+  min-height: 100%;
   background: var(--app-bg);
+  color: var(--app-text);
 }
 
-/* Hero Section */
 .heroSection {
-  padding: 80px 80px 60px;
   position: relative;
-  overflow: hidden;
+  padding: 56px 24px 40px;
   text-align: center;
+  overflow: hidden;
 }
 
 .heroSection::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 50% 30%, var(--app-accent-2), transparent 50%);
-  opacity: 0.08;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 20%,
+    rgba(167, 139, 250, 0.14),
+    transparent 55%
+  );
   pointer-events: none;
 }
 
 .heroContent {
-  max-width: 800px;
-  margin: 0 auto;
   position: relative;
   z-index: 1;
-}
-
-.heroBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--app-surface);
-  padding: 6px 16px;
-  border-radius: 40px;
-  margin-bottom: 24px;
-  border: 1px solid var(--app-border);
-}
-
-.badgeDot {
-  width: 8px;
-  height: 8px;
-  background: var(--app-accent);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.2); }
-}
-
-.badgeText {
-  color: var(--app-accent);
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 1px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .heroTitle {
+  margin: 0 0 16px !important;
+  font-size: clamp(2.25rem, 4.5vw, 3rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.03em;
   color: var(--app-text) !important;
-  font-size: 48px !important;
-  font-weight: 700 !important;
-  line-height: 1.2 !important;
-  letter-spacing: -1px;
-  margin-bottom: 16px !important;
+}
+
+.heroTitleAccent {
+  color: var(--app-accent) !important;
 }
 
 .heroDescription {
+  margin: 0 !important;
+  font-size: 1.05rem !important;
+  line-height: 1.65 !important;
   color: var(--app-text-muted) !important;
-  font-size: 18px !important;
-  line-height: 1.5 !important;
 }
 
-/* Projects Grid */
 .projectsSection {
-  padding: 20px 80px 60px;
+  padding: 8px 24px 72px;
+  max-width: 1120px;
+  margin: 0 auto;
 }
 
-/* Project Card - EXACT match to screenshot */
-.projectCard {
-  background: var(--app-surface) !important;
-  border: 1px solid var(--app-border) !important;
-  border-radius: 16px !important;
+.mosaicGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 0.88fr) minmax(0, 1.2fr);
+  grid-template-rows: minmax(300px, auto) minmax(248px, auto);
+  gap: 20px;
+}
+
+.mosaicCell {
+  min-width: 0;
+}
+
+.cellFeature {
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+
+.cellStack {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.cellCompact {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.cellHorizontal {
+  grid-column: 2 / 4;
+  grid-row: 2;
+}
+
+.cellCompact .mediaFrameCompact {
+  min-height: 168px;
+}
+
+.cellCompact .mediaFrameCompact .mediaImage {
+  min-height: 168px;
+}
+
+.cellCompact .cardBody {
+  padding: 16px 18px 18px;
+  gap: 10px;
+}
+
+.cellCompact .cardTitle {
+  font-size: 1.1rem !important;
+}
+
+.cellCompact .cardDescription {
+  font-size: 0.85rem !important;
+}
+
+.projectArticle {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(12, 14, 28, 0.92);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.projectArticle:hover {
+  transform: translateY(-3px);
+  border-color: rgba(244, 114, 182, 0.35);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.45);
+}
+
+.projectMedia {
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.horizontalMedia {
+  position: relative;
+  min-width: 0;
+  min-height: 236px;
+  display: flex;
+  flex: 1;
+}
+
+.horizontalMedia .mediaFrame {
+  flex: 1;
+  min-height: 236px;
+}
+
+.mediaFrame {
+  position: relative;
+  overflow: hidden;
+  background: #05060d;
+}
+
+.mediaFrame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 7, 15, 0.05) 0%,
+    rgba(5, 7, 15, 0.45) 100%
+  );
+}
+
+.mediaFrameFeature {
+  min-height: 280px;
+}
+
+.mediaFrameStack {
+  min-height: 200px;
+}
+
+.mediaFrameCompact {
+  min-height: 200px;
+}
+
+.mediaFrameHorizontal {
+  min-height: 236px;
   height: 100%;
 }
 
-.projectCard:hover {
-  transform: translateY(-4px);
-  border-color: var(--app-accent) !important;
-  box-shadow: var(--app-shadow);
-}
-
-/* Gradient image area - exactly like screenshot */
-.projectImage {
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.mediaImage {
   position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
-/* Gradient colors matching screenshot exactly */
-.projectImageNexus {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+.mediaFrameFeature .mediaImage {
+  min-height: 280px;
 }
 
-.projectImageVapor {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+.mediaFrameStack .mediaImage {
+  min-height: 200px;
 }
 
-.projectImageLumina {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+.mediaFrameCompact .mediaImage {
+  min-height: 200px;
 }
 
-.projectImageAtmosphere {
-  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+.mediaToneLumina .mediaImage {
+  filter: grayscale(0.65) contrast(1.08);
 }
 
-.imageTitle {
-  font-size: 28px;
-  font-weight: 600;
-  color: white;
-  letter-spacing: -0.5px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+.cardBody {
+  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
 }
 
-.projectTitle {
+.cardTitle {
+  margin: 0 !important;
   color: var(--app-text) !important;
-  margin-bottom: 12px !important;
-  font-size: 22px !important;
-  font-weight: 600 !important;
-  letter-spacing: -0.3px;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em;
 }
 
-.projectDescription {
+.cardDescription {
+  margin: 0 !important;
   color: var(--app-text-muted) !important;
-  line-height: 1.6 !important;
-  font-size: 14px !important;
-  margin-bottom: 16px !important;
-  min-height: 70px;
+  font-size: 0.9rem !important;
+  line-height: 1.65 !important;
 }
 
-.projectTags {
+.tagRow {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 20px;
 }
 
-.projectTag {
-  background: var(--app-surface-2) !important;
-  border: 1px solid var(--app-border) !important;
-  color: var(--app-text-muted) !important;
-  border-radius: 6px !important;
-  padding: 4px 12px !important;
-  font-size: 12px !important;
-  font-weight: 500 !important;
+.tagPill {
+  margin: 0 !important;
+  padding: 4px 11px !important;
+  border-radius: 999px !important;
+  font-size: 0.68rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em;
+  border: 1px solid rgba(167, 139, 250, 0.35) !important;
+  background: rgba(167, 139, 250, 0.12) !important;
+  color: #e9d5ff !important;
 }
 
-.cardActions {
+.linkRow {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  height: auto !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.textLink:hover {
+  color: var(--app-accent) !important;
+}
+
+.caseStudyLink {
+  font-size: 0.78rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em;
+  color: var(--app-accent) !important;
+}
+
+.horizontalCard {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  height: 100%;
+  min-height: 248px;
+}
+
+.horizontalBody {
+  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
   gap: 12px;
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--app-border);
+  justify-content: center;
 }
 
-.actionButton {
-  flex: 1;
-  border-radius: 8px !important;
-  font-size: 14px !important;
-}
-
-/* CTA Section - exact match to screenshot */
 .ctaSection {
-  margin: 40px 0 0;
-  background: var(--app-surface);
-  border-radius: 24px;
-  padding: 64px;
+  margin-top: 48px;
+  padding: 52px 28px;
   text-align: center;
-  border: 1px solid var(--app-border);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(10, 12, 24, 0.88);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
 .ctaTitle {
+  margin: 0 0 12px !important;
   color: var(--app-text) !important;
-  font-size: 36px !important;
-  font-weight: 700 !important;
-  margin-bottom: 16px !important;
-  letter-spacing: -0.5px;
+  font-size: clamp(1.65rem, 3vw, 2.1rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em;
 }
 
 .ctaDescription {
+  margin: 0 auto 26px !important;
+  max-width: 560px;
   color: var(--app-text-muted) !important;
-  font-size: 18px !important;
-  max-width: 600px;
-  margin: 0 auto 32px !important;
-  line-height: 1.5 !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
 }
 
 .ctaButton {
-  background: var(--app-accent) !important;
-  border: none !important;
-  padding: 12px 32px !important;
   height: auto !important;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  border-radius: 8px !important;
-  transition: all 0.3s ease !important;
+  padding: 12px 28px !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  background: rgba(7, 9, 18, 0.95) !important;
+  border: 1px solid var(--app-accent) !important;
+  color: var(--app-accent) !important;
+  box-shadow: 0 0 28px rgba(244, 114, 182, 0.2);
 }
 
 .ctaButton:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
+  color: #fff !important;
+  border-color: var(--app-accent) !important;
+  background: rgba(244, 114, 182, 0.18) !important;
 }
 
-/* Empty State */
 .emptyState {
   text-align: center;
   padding: 80px 20px;
-}
-
-.emptyIcon {
-  font-size: 64px;
-  color: var(--app-text-muted);
-  margin-bottom: 24px;
 }
 
 .emptyTitle {
@@ -251,73 +356,40 @@
   color: var(--app-text-muted) !important;
 }
 
-/* Responsive */
+@media (max-width: 900px) {
+  .mosaicGrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+
+  .cellFeature,
+  .cellStack,
+  .cellCompact,
+  .cellHorizontal {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .horizontalCard {
+    grid-template-columns: 1fr;
+  }
+
+  .horizontalMedia {
+    order: -1;
+    min-height: 200px;
+  }
+}
+
 @media (max-width: 768px) {
   .heroSection {
-    padding: 60px 20px 40px;
+    padding: 40px 16px 32px;
   }
-  
-  .heroTitle {
-    font-size: 32px !important;
-  }
-  
-  .heroDescription {
-    font-size: 16px !important;
-  }
-  
+
   .projectsSection {
-    padding: 20px 20px 40px;
+    padding: 8px 16px 48px;
   }
-  
-  .projectDescription {
-    min-height: auto;
-  }
-  
+
   .ctaSection {
-    padding: 40px 20px;
-  }
-  
-  .ctaTitle {
-    font-size: 28px !important;
-  }
-  
-  .ctaDescription {
-    font-size: 16px !important;
-  }
-  
-  .imageTitle {
-    font-size: 22px;
+    padding: 40px 18px;
   }
 }
-
-@media (max-width: 480px) {
-  .heroTitle {
-    font-size: 24px !important;
-  }
-  
-  .imageTitle {
-    font-size: 18px;
-  }
-}
-
-/* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.projectCard {
-  animation: fadeInUp 0.5s ease-out forwards;
-  opacity: 0;
-}
-
-.projectCard:nth-child(1) { animation-delay: 0s; }
-.projectCard:nth-child(2) { animation-delay: 0.1s; }
-.projectCard:nth-child(3) { animation-delay: 0.2s; }
-.projectCard:nth-child(4) { animation-delay: 0.3s; }

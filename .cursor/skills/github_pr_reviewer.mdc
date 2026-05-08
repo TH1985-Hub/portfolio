@@ -1,0 +1,74 @@
+name: github_pr_reviewer
+
+description: Reviews GitHub branches and pull requests using GitHub MCP tools. Compares branches with main/master, summarizes code changes, explains logic updates, and detects possible risks or merge conflicts.
+
+# GitHub PR Reviewer Skill
+
+## Workflow
+
+### 1. Repository & Branch Analysis
+Use:
+- list_repositories
+- list_branches
+- get_branch
+
+Purpose:
+- Detect active branches
+- Find recent commits
+- Identify default branch
+
+---
+
+### 2. Compare With Main
+Use:
+- compare_commits
+
+Compare:
+target_branch → main/master
+
+Purpose:
+- Detect changed files
+- Analyze additions/deletions
+- Review implementation differences
+
+---
+
+### 3. Analyze Code Changes
+Use:
+- get_file_contents
+- search_code
+
+Analyze:
+- React/UI updates
+- TypeScript changes
+- State management
+- API/config updates
+- Hooks and routing
+
+Example:
+- "Added login validation"
+- "Refactored auth logic"
+- "Moved API calls into hooks"
+
+---
+
+### 4. Detect Risks
+Check for:
+- Merge conflicts
+- Large refactors
+- Breaking changes
+- Dependency issues
+- Unused imports
+
+---
+
+### 5. Generate Summary
+
+Output:
+- Changed files
+- Main logic updates
+- Risks/conflicts
+- Merge recommendation
+
+Example:
+"Safe to merge after testing authentication flow."
