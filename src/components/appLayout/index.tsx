@@ -36,7 +36,7 @@ class AppLayoutView extends PureComponent<AppLayoutViewProps & WithTranslation> 
     return (
       <Layout className={styles.root}>
         <Header className={styles.header}>
-          <Typography.Title level={4} className={styles.title}>
+          <Typography.Title level={3} className={styles.title}>
             Tatevik Harutyunyan
           </Typography.Title>
           <Menu

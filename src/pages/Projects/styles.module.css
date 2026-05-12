@@ -1,395 +1,476 @@
-.container {
-  min-height: 100%;
-  background: var(--app-bg);
+.root {
+  width: 100%;
+  padding: 48px 24px 60px;
   color: var(--app-text);
 }
 
-.heroSection {
-  position: relative;
-  padding: 56px 24px 40px;
+.header {
+  margin: 0 auto;
+  max-width: 1400px;
+  margin-bottom: 48px;
   text-align: center;
-  overflow: hidden;
 }
 
-.heroSection::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at 50% 20%,
-    rgba(167, 139, 250, 0.14),
-    transparent 55%
-  );
-  pointer-events: none;
-}
-
-.heroContent {
-  position: relative;
-  z-index: 1;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.heroTitle {
+.title {
   margin: 0 0 16px !important;
-  font-size: clamp(2.25rem, 4.5vw, 3rem) !important;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 800 !important;
-  line-height: 1.12 !important;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   color: var(--app-text) !important;
+  line-height: 1.1;
 }
 
-.heroTitleAccent {
-  color: var(--app-accent) !important;
-}
-
-.heroDescription {
+.subtitle {
   margin: 0 !important;
-  font-size: 1.05rem !important;
-  line-height: 1.65 !important;
+  font-size: 1.05rem;
   color: var(--app-text-muted) !important;
+  max-width: 700px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  line-height: 1.7;
 }
 
-.projectsSection {
-  padding: 8px 24px 72px;
-  max-width: 1120px;
+.projectsGrid {
   margin: 0 auto;
-}
-
-.mosaicGrid {
+  max-width: 1400px;
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 0.88fr) minmax(0, 1.2fr);
-  grid-template-rows: minmax(300px, auto) minmax(248px, auto);
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
 }
 
-.mosaicCell {
-  min-width: 0;
-}
-
-.cellFeature {
-  grid-column: 1 / 3;
-  grid-row: 1;
-}
-
-.cellStack {
-  grid-column: 3;
-  grid-row: 1;
-}
-
-.cellCompact {
-  grid-column: 1;
-  grid-row: 2;
-}
-
-.cellHorizontal {
-  grid-column: 2 / 4;
-  grid-row: 2;
-}
-
-.cellCompact .mediaFrameCompact {
-  min-height: 168px;
-}
-
-.cellCompact .mediaFrameCompact .mediaImage {
-  min-height: 168px;
-}
-
-.cellCompact .cardBody {
-  padding: 16px 18px 18px;
-  gap: 10px;
-}
-
-.cellCompact .cardTitle {
-  font-size: 1.1rem !important;
-}
-
-.cellCompact .cardDescription {
-  font-size: 0.85rem !important;
-}
-
-.projectArticle {
-  height: 100%;
+.projectCard {
+  position: relative;
+  isolation: isolate;
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(
+      circle at 12% 12%,
+      rgba(200, 220, 236, 0.14),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 88% 100%,
+      rgba(95, 126, 149, 0.18),
+      transparent 42%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.02) 100%
+    ),
+    var(--app-surface);
+  backdrop-filter: blur(16px);
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(12, 14, 28, 0.92);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
-  overflow: hidden;
   transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease;
 }
 
-.projectArticle:hover {
-  transform: translateY(-3px);
-  border-color: rgba(244, 114, 182, 0.35);
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.45);
-}
-
-.projectMedia {
-  position: relative;
-  flex-shrink: 0;
-  overflow: hidden;
-}
-
-.horizontalMedia {
-  position: relative;
-  min-width: 0;
-  min-height: 236px;
-  display: flex;
-  flex: 1;
-}
-
-.horizontalMedia .mediaFrame {
-  flex: 1;
-  min-height: 236px;
-}
-
-.mediaFrame {
-  position: relative;
-  overflow: hidden;
-  background: #05060d;
-}
-
-.mediaFrame::after {
+.projectCard::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 1;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.24),
+    rgba(255, 255, 255, 0.03) 30%,
+    rgba(95, 126, 149, 0.24) 100%
+  );
+  opacity: 0.5;
   pointer-events: none;
+}
+
+.projectCard::after {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 22px;
+  width: 72px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(233, 244, 255, 0.95),
+    rgba(126, 162, 188, 0.4)
+  );
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.projectCard:hover {
+  transform: translateY(-10px) scale(1.01);
+  border-color: rgba(170, 199, 222, 0.2);
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.projectImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(255, 255, 255, 0.12),
+      transparent 45%
+    ),
+    rgba(10, 18, 32, 0.92);
+}
+
+.projectImage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(5, 7, 15, 0.05) 0%,
-    rgba(5, 7, 15, 0.45) 100%
+    rgba(255, 255, 255, 0.04) 0%,
+    transparent 30%,
+    rgba(10, 18, 32, 0.2) 62%,
+    rgba(10, 18, 32, 0.72) 100%
   );
+  pointer-events: none;
 }
 
-.mediaFrameFeature {
-  min-height: 280px;
-}
-
-.mediaFrameStack {
-  min-height: 200px;
-}
-
-.mediaFrameCompact {
-  min-height: 200px;
-}
-
-.mediaFrameHorizontal {
-  min-height: 236px;
-  height: 100%;
-}
-
-.mediaImage {
-  position: relative;
-  z-index: 0;
+.projectImageImg {
   width: 100%;
   height: 100%;
-  min-height: inherit;
   object-fit: cover;
   object-position: center;
   display: block;
+  transform: scale(1.01);
+  transition:
+    transform 0.6s ease,
+    filter 0.6s ease;
+  filter: saturate(1.02) contrast(1.03);
 }
 
-.mediaFrameFeature .mediaImage {
-  min-height: 280px;
+.projectCard:hover .projectImageImg {
+  transform: scale(1.06);
+  filter: saturate(1.08) contrast(1.05);
 }
 
-.mediaFrameStack .mediaImage {
-  min-height: 200px;
-}
-
-.mediaFrameCompact .mediaImage {
-  min-height: 200px;
-}
-
-.mediaToneLumina .mediaImage {
-  filter: grayscale(0.65) contrast(1.08);
-}
-
-.cardBody {
-  padding: 20px 22px 22px;
+.projectContent {
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   flex: 1;
+  position: relative;
+  z-index: 1;
 }
 
-.cardTitle {
-  margin: 0 !important;
-  color: var(--app-text) !important;
-  font-size: 1.2rem !important;
-  font-weight: 700 !important;
-  letter-spacing: -0.02em;
+.projectTitle {
+  margin: 0;
+  font-size: 1.32rem;
+  font-weight: 800;
+  color: var(--app-text);
+  line-height: 1.25;
+  letter-spacing: -0.025em;
 }
 
-.cardDescription {
-  margin: 0 !important;
-  color: var(--app-text-muted) !important;
-  font-size: 0.9rem !important;
-  line-height: 1.65 !important;
+.projectDescription {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--app-text-muted);
+  line-height: 1.58;
+  max-width: 62ch;
 }
 
-.tagRow {
+.techStack {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 7px;
 }
 
-.tagPill {
-  margin: 0 !important;
-  padding: 4px 11px !important;
-  border-radius: 999px !important;
-  font-size: 0.68rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.06em;
-  border: 1px solid rgba(167, 139, 250, 0.35) !important;
-  background: rgba(167, 139, 250, 0.12) !important;
-  color: #e9d5ff !important;
-}
-
-.linkRow {
-  display: flex;
-  flex-wrap: wrap;
+.techBadge {
+  display: inline-flex;
   align-items: center;
-  gap: 16px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.05)
+  );
+  border: 1px solid rgba(170, 199, 222, 0.18);
+  color: var(--app-accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.techBadge:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.16),
+    rgba(255, 255, 255, 0.08)
+  );
+  transform: translateY(-2px);
+  border-color: rgba(189, 216, 236, 0.3);
+}
+
+.projectActions {
+  display: flex;
+  gap: 12px;
   margin-top: auto;
   padding-top: 4px;
 }
 
-.textLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0;
-  height: auto !important;
-  font-size: 0.82rem !important;
-  font-weight: 600 !important;
-  color: rgba(255, 255, 255, 0.72) !important;
-}
-
-.textLink:hover {
-  color: var(--app-accent) !important;
-}
-
-.caseStudyLink {
-  font-size: 0.78rem !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.12em;
-  color: var(--app-accent) !important;
-}
-
-.horizontalCard {
-  display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-  height: 100%;
-  min-height: 248px;
-}
-
-.horizontalBody {
-  padding: 20px 22px 22px;
+.actionButton {
+  flex: 1;
+  height: 40px !important;
+  border-radius: 14px !important;
+  font-weight: 700 !important;
+  font-size: 0.84rem !important;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  align-items: center;
   justify-content: center;
+  gap: 8px;
+  letter-spacing: 0.01em;
+  transition: all 0.25s ease;
+}
+
+.liveButton {
+  background: linear-gradient(
+    135deg,
+    rgba(116, 145, 168, 0.98),
+    rgba(182, 205, 224, 0.92)
+  ) !important;
+  border: none !important;
+  color: rgba(10, 18, 32, 0.92) !important;
+  box-shadow:
+    0 12px 30px rgba(35, 54, 79, 0.24) !important;
+    inset: 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+}
+
+.liveButton:hover {
+  transform: translateY(-2px) !important;
+  box-shadow:
+    0 16px 40px rgba(35, 54, 79, 0.32) !important;
+    inset: 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+}
+
+.githubButton {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: var(--app-text) !important;
+  backdrop-filter: blur(10px);
+}
+
+.githubButton:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  transform: translateY(-2px) !important;
+  border-color: rgba(170, 199, 222, 0.34) !important;
 }
 
 .ctaSection {
-  margin-top: 48px;
-  padding: 52px 28px;
+  margin: 72px auto 0;
+  max-width: 1400px;
+  padding: 48px 32px;
+  border-radius: 36px;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(95, 126, 149, 0.18),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(145, 166, 189, 0.14),
+      transparent 45%
+    ),
+    var(--app-surface);
+  border: 1px solid var(--app-border);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.2);
+}
+
+.ctaContent {
   text-align: center;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(10, 12, 24, 0.88);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
 .ctaTitle {
-  margin: 0 0 12px !important;
-  color: var(--app-text) !important;
-  font-size: clamp(1.65rem, 3vw, 2.1rem) !important;
+  margin: 0 !important;
+  font-size: 2.2rem;
   font-weight: 800 !important;
-  letter-spacing: -0.02em;
+  color: var(--app-text) !important;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
 }
 
 .ctaDescription {
-  margin: 0 auto 26px !important;
-  max-width: 560px;
+  margin: 0 !important;
+  font-size: 1.05rem;
   color: var(--app-text-muted) !important;
-  font-size: 1rem !important;
-  line-height: 1.6 !important;
+  max-width: 600px;
+  line-height: 1.8;
 }
 
 .ctaButton {
-  height: auto !important;
-  padding: 12px 28px !important;
-  border-radius: 999px !important;
+  background: linear-gradient(
+    135deg,
+    rgba(95, 126, 149, 0.96),
+    rgba(145, 166, 189, 0.9)
+  ) !important;
+  border: none !important;
+  color: white !important;
+  padding: 12px 48px !important;
+  border-radius: 14px !important;
   font-weight: 700 !important;
-  font-size: 0.95rem !important;
-  background: rgba(7, 9, 18, 0.95) !important;
-  border: 1px solid var(--app-accent) !important;
-  color: var(--app-accent) !important;
-  box-shadow: 0 0 28px rgba(244, 114, 182, 0.2);
+  font-size: 1rem !important;
+  height: auto !important;
+  box-shadow: 0 14px 36px rgba(35, 54, 79, 0.3) !important;
+  transition: all 0.3s ease !important;
 }
 
 .ctaButton:hover {
-  color: #fff !important;
-  border-color: var(--app-accent) !important;
-  background: rgba(244, 114, 182, 0.18) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 18px 48px rgba(35, 54, 79, 0.4) !important;
 }
 
-.emptyState {
-  text-align: center;
-  padding: 80px 20px;
+:global(html[data-theme="light"]) .projectCard {
+  border-color: rgba(14, 20, 45, 0.1);
+  background:
+    radial-gradient(
+      circle at 12% 12%,
+      rgba(95, 126, 149, 0.08),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 88% 100%,
+      rgba(145, 166, 189, 0.08),
+      transparent 42%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(247, 250, 252, 0.95) 100%
+    ),
+    var(--app-surface);
+  box-shadow:
+    0 20px 50px rgba(8, 13, 28, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
-.emptyTitle {
+:global(html[data-theme="light"]) .projectCard:hover {
+  border-color: rgba(95, 126, 149, 0.18);
+  box-shadow:
+    0 28px 80px rgba(8, 13, 28, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+:global(html[data-theme="light"]) .projectCard::before {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.22) 30%,
+    rgba(95, 126, 149, 0.12) 100%
+  );
+  opacity: 0.75;
+}
+
+:global(html[data-theme="light"]) .projectCard::after {
+  background: linear-gradient(
+    90deg,
+    rgba(95, 126, 149, 0.85),
+    rgba(145, 166, 189, 0.32)
+  );
+}
+
+:global(html[data-theme="light"]) .techBadge {
+  background: linear-gradient(
+    180deg,
+    rgba(95, 126, 149, 0.08),
+    rgba(95, 126, 149, 0.04)
+  );
+  border-color: rgba(95, 126, 149, 0.16);
+  color: var(--app-accent);
+}
+
+:global(html[data-theme="light"]) .techBadge:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(95, 126, 149, 0.12),
+    rgba(95, 126, 149, 0.06)
+  );
+}
+
+:global(html[data-theme="light"]) .githubButton {
+  background: rgba(255, 255, 255, 0.72) !important;
+  border-color: rgba(14, 20, 45, 0.1) !important;
+}
+
+:global(html[data-theme="light"]) .githubButton:hover {
+  background: rgba(95, 126, 149, 0.08) !important;
+}
+
+:global(html[data-theme="light"]) .ctaSection {
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(95, 126, 149, 0.08),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(145, 166, 189, 0.06),
+      transparent 45%
+    ),
+    var(--app-surface);
+  border-color: rgba(14, 20, 45, 0.12);
+  box-shadow: 0 28px 70px rgba(8, 13, 28, 0.1);
+}
+
+:global(html[data-theme="light"]) .ctaTitle {
   color: var(--app-text) !important;
-  margin-bottom: 8px !important;
 }
 
-.emptyDescription {
+:global(html[data-theme="light"]) .ctaDescription {
   color: var(--app-text-muted) !important;
 }
 
-@media (max-width: 900px) {
-  .mosaicGrid {
-    grid-template-columns: 1fr;
-    grid-template-rows: none;
-  }
-
-  .cellFeature,
-  .cellStack,
-  .cellCompact,
-  .cellHorizontal {
-    grid-column: 1;
-    grid-row: auto;
-  }
-
-  .horizontalCard {
-    grid-template-columns: 1fr;
-  }
-
-  .horizontalMedia {
-    order: -1;
-    min-height: 200px;
-  }
-}
-
 @media (max-width: 768px) {
-  .heroSection {
-    padding: 40px 16px 32px;
+  .root {
+    padding: 36px 16px 48px;
   }
 
-  .projectsSection {
-    padding: 8px 16px 48px;
+  .header {
+    margin-bottom: 36px;
   }
 
-  .ctaSection {
-    padding: 40px 18px;
+  .projectsGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .projectContent {
+    padding: 16px;
+  }
+
+  .actionButton {
+    font-size: 0.85rem !important;
   }
 }
