@@ -1,8 +1,12 @@
 import { useState } from "react";
 import {
+  AppstoreOutlined,
   GithubOutlined,
+  HomeOutlined,
   LinkedinOutlined,
   MoonOutlined,
+  PhoneOutlined,
+  ProjectOutlined,
   SunOutlined,
   TwitterOutlined,
 } from "@ant-design/icons";
@@ -25,12 +29,35 @@ class AppLayoutView extends PureComponent<AppLayoutViewProps & WithTranslation> 
     const selectedKeys = getSelectedMenuKeys(this.props.pathname);
     const { showGeminiWidget } = this.props;
     const { t } = this.props;
-    const menuItems = [
+    const headerMenuItems = [
       { key: "/", label: t("layout.menuHome") },
       { key: "/gemini", label: t("layout.menuGemini") },
       { key: "/projects", label: t("common.projects") },
       { key: "/experience", label: t("common.experience") },
       { key: "/contact", label: t("common.contact") },
+    ];
+    const menuItems = [
+      { key: "/", label: <HomeOutlined />, title: t("layout.menuHome") },
+      {
+        key: "/gemini",
+        label: <AppstoreOutlined />,
+        title: t("layout.menuGemini"),
+      },
+      {
+        key: "/projects",
+        label: <ProjectOutlined />,
+        title: t("common.projects"),
+      },
+      {
+        key: "/experience",
+        label: <GithubOutlined />,
+        title: t("common.experience"),
+      },
+      {
+        key: "/contact",
+        label: <PhoneOutlined />,
+        title: t("common.contact"),
+      },
     ];
 
     return (
@@ -39,16 +66,27 @@ class AppLayoutView extends PureComponent<AppLayoutViewProps & WithTranslation> 
           <Typography.Title level={3} className={styles.title}>
             Tatevik Harutyunyan
           </Typography.Title>
-          <Menu
-            mode="horizontal"
-            selectedKeys={selectedKeys}
-            items={menuItems}
-            onClick={({ key }) => {
-              this.props.onNavigate(key);
-            }}
-            className={styles.menu}
-          />
           <Space size={10} className={styles.headerActions}>
+            <nav className={styles.headerMenu} aria-label="Header navigation">
+              {headerMenuItems.map((item) => {
+                const isActive = selectedKeys.includes(item.key);
+
+                return (
+                  <button
+                    key={item.key}
+                    type="button"
+                    className={`${styles.headerMenuLink} ${
+                      isActive ? styles.headerMenuLinkActive : ""
+                    }`}
+                    onClick={() => {
+                      this.props.onNavigate(item.key);
+                    }}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
+            </nav>
             <LanguageSwitcher
               lang={this.props.lang}
               onChange={this.props.onChangeLanguage}
@@ -69,6 +107,15 @@ class AppLayoutView extends PureComponent<AppLayoutViewProps & WithTranslation> 
             />
           </Space>
         </Header>
+        <Menu
+          mode="horizontal"
+          selectedKeys={selectedKeys}
+          items={menuItems}
+          onClick={({ key }) => {
+            this.props.onNavigate(key);
+          }}
+          className={styles.menu}
+        />
         <Content className={styles.content}>
           <Outlet />
 

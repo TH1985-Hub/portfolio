@@ -1,5 +1,5 @@
 import atmosphereCover from "@/assets/projects/atmosphere.png";
-import luminaCover from "@/assets/projects/lumina.jpg";
+import openAICover from "@/assets/projects/openAI.png";
 // import nexusCover from "@/assets/projects/nexus.png";
 import jewelleyCover from "@/assets/projects/jewellary.png.png";
 import wineCover from "@/assets/projects/wineCover.png";
@@ -23,9 +23,9 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 3,
-    tags: ["THREE.JS", "WEBGL", "FRAMER MOTION"],
-    coverImage: luminaCover,
-    githubUrl: "#",
+    tags: ["React", "Redux", "Material UI"],
+    coverImage: openAICover,
+    githubUrl: "https://github.com/TH1985-Hub/open-AI",
     liveUrl: "#",
   },
   {

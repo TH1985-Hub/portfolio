@@ -70,9 +70,9 @@
     "project2ImageAlt": "Retro CRT monitor with pink neon glow, keyboard, and synthwave-style desk setup for Wine Shop",
     "project2Title": "Wine Shop",
     "project2Description": "An elegant, high-performance wine shop interface built with React and Ant Design, featuring a curated product catalog and a seamless, sophisticated shopping experience.",
-    "project3ImageAlt": "Glowing network light trails for the Lumina Social project",
-    "project3Title": "Lumina Social",
-    "project3Description": "A privacy-focused social network experimenting with decentralized identity, built with React and Three.js for interactive 3D profile avatars.",
+    "project3ImageAlt": "Glowing network light trails for the Open AI project",
+    "project3Title": "Open AI",
+    "project3Description": "Built a Gemini Clone AI project using React, Redux, Material UI, and Generative AI technologies, featuring an interactive and modern user experience.",
     "project4ImageAlt": "Dark card with centered cloud and checkmark icon for the Atmosphere CMS project",
     "project4Title": "Atmosphere CMS",
     "project4Description": "A headless CMS focused on digital creators, featuring an intuitive drag-and-drop schema builder."

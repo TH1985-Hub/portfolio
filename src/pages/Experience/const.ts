@@ -1,4 +1,4 @@
-import heroWorkspace from '@/assets/experience/hero-workspace.png'
+import heroWorkspace from '@/assets/experience/avatar-shot.mp4'
 
 import type { ArsenalCardItem, SkillBarItem, TimelineItem } from './types'
 

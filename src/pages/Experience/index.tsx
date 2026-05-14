@@ -5,7 +5,6 @@ import {
   BranchesOutlined,
   CloudOutlined,
   CodeOutlined,
-  ThunderboltOutlined,
 } from '@ant-design/icons'
 import { Typography } from 'antd'
 import type { ReactNode } from 'react'
@@ -164,24 +163,16 @@ class ExperiencePageView extends PureComponent<WithTranslation> {
               </div>
               <div className={styles.heroVisual}>
                 <div className={styles.heroImageFrame}>
-                  <img
+                  <video
                     src={EXPERIENCE_HERO_IMAGE}
-                    alt={t('experience.heroImageAlt')}
+                    aria-label={t('experience.heroImageAlt')}
                     className={styles.heroImage}
-                    loading="lazy"
-                    decoding="async"
+                    controls
+                    playsInline
+                    preload="metadata"
+                    disableRemotePlayback
+                    controlsList="nodownload noplaybackrate nofullscreen noremoteplayback"
                   />
-                  <div className={styles.heroFloatBadge}>
-                    <span className={styles.heroFloatIcon} aria-hidden>
-                      <ThunderboltOutlined />
-                    </span>
-                    <div className={styles.heroFloatText}>
-                      <span className={styles.heroFloatTitle}>{t('experience.floatBadgeTitle')}</span>
-                      <span className={styles.heroFloatSub}>
-                        {t('experience.floatBadgeSubtitle')}
-                      </span>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

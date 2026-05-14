@@ -595,26 +595,36 @@
   line-height: 1.75;
 }
 
-.bannerTechRow {
+.bannerKeyboard {
   position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
   margin-top: 24px;
-  width: min(900px, 100%);
+  width: min(560px, 100%);
   z-index: 2;
-  padding: 20px 24px;
+  padding: 18px 20px;
   background: rgba(15, 26, 46, 0.88);
-  border-radius: 40px;
+  border-radius: 28px;
   border: 1px solid rgba(95, 146, 210, 0.16);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.04),
     0 24px 70px rgba(0, 0, 0, 0.14);
-  transform: rotate(-2deg);
 }
 
-.bannerTechRow::before {
+.bannerKeyboardRow {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.bannerKeyboardRow:last-child {
+  width: calc(100% - 48px);
+}
+
+.bannerKeyboard::before {
   content: "";
   position: absolute;
   left: -18px;
@@ -627,7 +637,7 @@
   pointer-events: none;
 }
 
-.bannerTechRow::after {
+.bannerKeyboard::after {
   content: "";
   position: absolute;
   right: -18px;
@@ -644,14 +654,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 140px;
-  height: 48px;
-  padding: 0 16px;
-  border-radius: 24px;
+  flex: 1;
+  min-width: 0;
+  min-height: 46px;
+  padding: 0 14px;
+  border-radius: 18px;
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(95, 146, 210, 0.2);
   color: var(--app-accent);
-  font-size: 0.9rem;
+  font-size: 0.86rem;
   font-family: "Times New Roman", "Georgia", "Cambria", serif;
   font-weight: 500;
   font-style: italic;
@@ -677,32 +688,26 @@
 }
 
 .bannerSymbol:nth-child(1) {
-  transform: translate(-8px, 0px);
   animation: float 6s ease-in-out infinite;
 }
 
 .bannerSymbol:nth-child(2) {
-  transform: translate(0px, 8px);
   animation: float 6s ease-in-out infinite 1s;
 }
 
 .bannerSymbol:nth-child(3) {
-  transform: translate(-4px, -6px);
   animation: float 6s ease-in-out infinite 2s;
 }
 
 .bannerSymbol:nth-child(4) {
-  transform: translate(4px, 6px);
   animation: float 6s ease-in-out infinite 3s;
 }
 
 .bannerSymbol:nth-child(5) {
-  transform: translate(-6px, 4px);
   animation: float 6s ease-in-out infinite 4s;
 }
 
 .bannerSymbol:nth-child(6) {
-  transform: translate(2px, -4px);
   animation: float 6s ease-in-out infinite 5s;
 }
 
@@ -764,7 +769,7 @@
   }
 }
 
-.bannerTechRow::before {
+.bannerKeyboard::before {
   content: "";
   position: absolute;
   left: -18px;
@@ -778,7 +783,7 @@
   animation: drift 12s ease-in-out infinite;
 }
 
-.bannerTechRow::after {
+.bannerKeyboard::after {
   content: "";
   position: absolute;
   right: -18px;
@@ -848,5 +853,22 @@
 
   .heroLeft {
     min-height: auto;
+  }
+
+  .bannerKeyboard {
+    width: 100%;
+    padding: 16px 14px;
+  }
+
+  .bannerKeyboardRow,
+  .bannerKeyboardRow:last-child {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .bannerSymbol {
+    min-height: 42px;
+    padding: 0 10px;
+    font-size: 0.72rem;
   }
 }

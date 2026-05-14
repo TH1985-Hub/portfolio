@@ -12,13 +12,14 @@ import styles from "./styles.module.css";
 const { Title, Paragraph } = Typography;
 const TECH_STACK = ["React", "TypeScript", "Ant Design"] as const;
 const BANNER_TECH = [
-  { label: "π² + e = beauty" },
-  { label: "∞ × creativity" },
-  { label: "∇imagination" },
-  { label: "∫dreams dt" },
-  { label: "√innovation" },
-  { label: "Σideas" },
+  { label: "ПЂВІ + e = beauty" },
+  { label: "в€ћ Г— creativity" },
+  { label: "в€‡imagination" },
+  { label: "в€«dreams dt" },
+  { label: "в€љinnovation" },
+  { label: "ОЈideas" },
 ] as const;
+const BANNER_TECH_ROWS = [BANNER_TECH.slice(0, 3), BANNER_TECH.slice(3)] as const;
 const COMPLETED_PROJECTS = "15+";
 
 const renderSkillIcon = (title: string) => {
@@ -142,10 +143,17 @@ export const HomePage = () => {
           <Paragraph className={styles.bannerSubtitle}>
             {t("home.bannerSubtitle")}
           </Paragraph>
-          <div className={styles.bannerTechRow}>
-            {BANNER_TECH.map((tech) => (
-              <div key={tech.label} className={styles.bannerSymbol}>
-                {tech.label}
+          <div className={styles.bannerKeyboard} aria-hidden="true">
+            {BANNER_TECH_ROWS.map((row, index) => (
+              <div
+                key={`keyboard-row-${index + 1}`}
+                className={styles.bannerKeyboardRow}
+              >
+                {row.map((tech) => (
+                  <div key={tech.label} className={styles.bannerSymbol}>
+                    {tech.label}
+                  </div>
+                ))}
               </div>
             ))}
           </div>

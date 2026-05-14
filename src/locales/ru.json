@@ -70,9 +70,9 @@
     "project2ImageAlt": "Ретро-монитор ЭЛТ с розовой неоновой подсветкой и клавиатурой для проекта Wine Shop",
     "project2Title": "Wine Shop",
     "project2Description": "Элегантный и высокопроизводительный интерфейс винного магазина, созданный на React и Ant Design, с тщательно подобранным каталогом товаров и безупречным, изысканным процессом покупки.",
-    "project3ImageAlt": "Светящиеся сетевые линии для проекта Lumina Social",
-    "project3Title": "Lumina Social",
-    "project3Description": "Социальная сеть с фокусом на приватность и экспериментами с децентрализованной идентичностью, построенная на React и Three.js.",
+    "project3ImageAlt": "Светящиеся сетевые линии для проекта Open AI",
+    "project3Title": "Open AI",
+    "project3Description": "Создан клон Gemini AI с использованием React, Redux, Material UI и технологий генеративного ИИ, предлагающий интерактивный и современный пользовательский опыт.",
     "project4ImageAlt": "Тёмная карточка с иконкой облака и галочки для проекта Atmosphere CMS",
     "project4Title": "Atmosphere CMS",
     "project4Description": "Headless CMS для цифровых создателей с интуитивным drag-and-drop конструктором схем."
