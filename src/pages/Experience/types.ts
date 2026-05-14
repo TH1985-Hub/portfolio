@@ -15,9 +15,13 @@ export type SkillBarItem = {
   percent: SkillBarPercent
 }
 
-export type ArsenalIconKey = 'layers' | 'api' | 'node' | 'cloud' | 'figma' | 'git'
+export type SkillItem = {
+  name: string
+  icon: string
+}
 
-export type ArsenalCardItem = {
-  id: string
-  icon: ArsenalIconKey
+export type SkillGroup = {
+  title: string
+  groupIcon: string
+  items: SkillItem[]
 }

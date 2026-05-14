@@ -33,8 +33,16 @@
     "uiSystemsDescription": "Building cohesive experiences with Ant Design & Tailwind CSS."
   },
   "contact": {
-    "introPrefix": "Wire ",
-    "introSuffix": " to EmailJS, Resend, a serverless function, or your backend.",
+   
+    
+    "infoEyebrow": "Let’s Connect",
+    "infoTitle": "Open to thoughtful remote work and meaningful collaborations.",
+    "infoDescription": "If you have a product idea, freelance opportunity, or frontend role in mind, I’d love to hear about it.",
+    "infoEmail": "Email",
+    "infoPhone": "Phone",
+    "infoLocation": "Location",
+    "infoAvailability": "Availability",
+    "infoAvailabilityValue": "Open to remote work",
     "nameLabel": "Name",
     "nameRequired": "Please enter your name",
     "namePlaceholder": "Jane Doe",
@@ -45,7 +53,7 @@
     "messageLabel": "Message",
     "messageRequired": "Please enter a message",
     "messagePlaceholder": "What would you like to build?",
-    "success": "Thanks, {{name}}. Hook this form to your API or form service."
+    "success": "Thanks, {{name}}. Tatevik will be in touch with you."
   },
   "projects": {
     "heroTitleLead": "Engineered ",
@@ -74,8 +82,8 @@
     "project3Title": "Open AI",
     "project3Description": "Built a Gemini Clone AI project using React, Redux, Material UI, and Generative AI technologies, featuring an interactive and modern user experience.",
     "project4ImageAlt": "Dark card with centered cloud and checkmark icon for the Atmosphere CMS project",
-    "project4Title": "Atmosphere CMS",
-    "project4Description": "A headless CMS focused on digital creators, featuring an intuitive drag-and-drop schema builder."
+    "project4Title": "Portfolio",
+    "project4Description": "I developed a modern and responsive portfolio website using React, TypeScript, and Ant Design, showcasing my projects, skills, and front-end development experience with a clean and interactive user interface."
   },
   "gemini": {
     "badge": "Gemini Chat",
@@ -107,14 +115,14 @@
     "heroThrough": " through ",
     "heroAccentReact": "React.",
     "heroBody": "For the past 2 years, I've lived at the intersection of pixel-perfect aesthetics and high-performance engineering. My journey is defined by a relentless pursuit of the unconventional in frontend architecture.",
-    "statYearsValue": "2+",
+    "statYearsValue": "3+",
     "statYearsLabel": "YEARS PROFESSIONAL",
     "statUiValue": "40+",
     "statUiLabel": "UI COMPONENTS BUILT",
     "floatBadgeTitle": "Always Innovating",
     "floatBadgeSubtitle": "Focus: React & TypeScript",
     "odysseyTitle": "Professional Odyssey",
-    "timeline1JobTitle": "Senior Frontend Engineer",
+    "timeline1JobTitle": " Frontend Engineer",
     "timeline1Company": "Lumina Tech Solutions",
     "timeline1Dates": "Jan 2023 - Present",
     "timeline1Description": "Leading the architectural overhaul of the primary dashboard using React 18 and Next.js. Improved Core Web Vitals by 40% through aggressive code splitting and component memoization.",
@@ -128,9 +136,9 @@
     "timeline3Description": "Assisted in building mobile-responsive landing pages. Mastered CSS layouts and JavaScript fundamentals while working on various client-side projects.",
     "arsenalTitle": "Technical Arsenal",
     "arsenalBody": "My stack is focused on modern web standards, with a heavy emphasis on type-safety, performance, and maintainability.",
-    "skillReactNext": "React / Next.js",
+    "skillReactNext": "React",
     "skillTypeScript": "TypeScript",
-    "skillTailwind": "Tailwind CSS / UI Design",
+    "skillAntDesign": "Ant Design / UI Design",
     "skillPct95": "95%",
     "skillPct90": "90%",
     "skillPct88": "88%",

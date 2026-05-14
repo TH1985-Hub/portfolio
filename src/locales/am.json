@@ -34,7 +34,7 @@
   },
   "contact": {
     "introPrefix": "Կապեք ",
-    "introSuffix": "ը EmailJS-ի, Resend-ի, serverless ֆունկցիայի կամ ձեր backend-ի հետ։",
+
     "nameLabel": "Անուն",
     "nameRequired": "Խնդրում ենք մուտքագրել ձեր անունը",
     "namePlaceholder": "Jane Doe",
@@ -45,7 +45,7 @@
     "messageLabel": "Հաղորդագրություն",
     "messageRequired": "Խնդրում ենք մուտքագրել հաղորդագրություն",
     "messagePlaceholder": "Ի՞նչ կցանկանայիք կառուցել։",
-    "success": "Շնորհակալություն, {{name}}։ Կապեք այս ձևը ձեր API-ին կամ form service-ին։"
+    "success": "Շնորհակալություն, {{name}}։ Տաթևիկը կապ կհաստատի ձեզ հետ"
   },
   "projects": {
     "heroTitleLead": "Կառուցված ",
@@ -73,9 +73,9 @@
     "project3ImageAlt": "Open AI նախագծի համար ցանցային լուսային հետքեր",
     "project3Title": "Open AI",
     "project3Description": "Ստեղծվել է Gemini Clone AI նախագիծ React, Redux, Material UI և Generative AI տեխնոլոգիաներով, որը ներկայացնում է ինտերակտիվ և ժurnal օգտատերի փորձ։",
-    "project4ImageAlt": "Atmosphere CMS նախագծի համար ամպի և նշանի պատկերակով մինիմալիստ մութ քարտ",
-    "project4Title": "Atmosphere CMS",
-    "project4Description": "Headless CMS թվային ստեղծագործողների համար՝ ինտուիտիվ drag-and-drop սխեմայի կոնստրուկտորով։"
+    "project4ImageAlt": "Portfolio նախագծի համար ամպի և նշանի պատկերակով մինիմալիստ մութ քարտ",
+    "project4Title": "Portfolio",
+    "project4Description": "Ես ստեղծել եմ ժամանակակից և արձագանքող պորտֆոլիո կայք React, TypeScript և Ant Design տեխնոլոգիաներով, որտեղ ներկայացված են իմ նախագծերը, հմտությունները և Front-End ծրագրավորման փորձը՝ մաքուր և ինտերակտիվ դիզայնով։"
   },
   "gemini": {
     "badge": "Gemini Զրույց",
@@ -107,14 +107,14 @@
     "heroThrough": " միջոցով ",
     "heroAccentReact": "React.",
     "heroBody": "Վերջին 2 տարիներին ապրել եմ կատարյալ փիքսելային էսթետիկայի և բարձր արդյունավետ ինժեներիայի հանգույցում։ Ուղին սահմանվում է frontend ճարտարապետության մեջ «ոչ ավանդականի» անդադար փնտրտուքով։",
-    "statYearsValue": "2+",
+    "statYearsValue": "3+",
     "statYearsLabel": "ՏԱՐԻ ՄԱՍՆԱԳԻՏԱԿԱՆ",
     "statUiValue": "40+",
     "statUiLabel": "ԿԱՐԾՎԱԾ UI ԿՈՄՊՈՆԵՆՏՆԵՐ",
     "floatBadgeTitle": "Միշտ նորարար",
     "floatBadgeSubtitle": "Ուշադրություն՝ React և TypeScript",
     "odysseyTitle": "Մասնագիտական ուղի",
-    "timeline1JobTitle": "Ավագ Frontend ինժեներ",
+    "timeline1JobTitle": "Frontend ինժեներ",
     "timeline1Company": "Lumina Tech Solutions",
     "timeline1Dates": "Հնվ 2023 - Այժմ",
     "timeline1Description": "Ղեկավարել եմ հիմնական վահանակի ճարտարապետական վերակառուցումը React 18 և Next.js-ով։ Core Web Vitals-ը բարելավել եմ 40%-ով՝ կոդի բաժանումով և կոմպոնենտների մեմոիզացիայով։",
@@ -128,9 +128,9 @@
     "timeline3Description": "Օգնել եմ կառուցել մոբայլ-հարմար ներդիրներ։ Կատարելագործել եմ CSS դասավորությունները և JavaScript-ի հիմքերը։",
     "arsenalTitle": "Տեխնիկական զինանոց",
     "arsenalBody": "Սթեքը կենտրոնացած է ժամանակակից վեբ ստանդարտների վրա՝ տիպերի անվտանգություն, արդյունավետություն և սպասարկելիություն։",
-    "skillReactNext": "React / Next.js",
+    "skillReactNext": "React",
     "skillTypeScript": "TypeScript",
-    "skillTailwind": "Tailwind CSS / UI դիզայն",
+    "skillTailwind": "Ant Design / UI դիզայն",
     "skillPct95": "95%",
     "skillPct90": "90%",
     "skillPct88": "88%",

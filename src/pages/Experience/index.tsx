@@ -1,24 +1,16 @@
-import {
-  ApiOutlined,
-  AppstoreOutlined,
-  BgColorsOutlined,
-  BranchesOutlined,
-  CloudOutlined,
-  CodeOutlined,
-} from '@ant-design/icons'
 import { Typography } from 'antd'
 import type { ReactNode } from 'react'
 import { PureComponent } from 'react'
 import { withTranslation, type WithTranslation } from 'react-i18next'
 
 import {
-  ARSENAL_CARDS,
   EXPERIENCE_HERO_IMAGE,
   SKILL_BARS,
+  SKILL_GROUPS,
   TIMELINE_ITEMS,
 } from './const'
 import styles from './styles.module.css'
-import type { ArsenalIconKey, TimelineItem } from './types'
+import type { TimelineItem } from './types'
 
 const { Title, Paragraph } = Typography
 
@@ -27,46 +19,14 @@ class ExperiencePageView extends PureComponent<WithTranslation> {
     window.scrollTo(0, 0)
   }
 
-  arsenalIcon = (key: ArsenalIconKey): ReactNode => {
-    const iconClass = styles.arsenalIcon
-    switch (key) {
-      case 'layers':
-        return <AppstoreOutlined className={iconClass} aria-hidden />
-      case 'api':
-        return <ApiOutlined className={iconClass} aria-hidden />
-      case 'node':
-        return <CodeOutlined className={iconClass} aria-hidden />
-      case 'cloud':
-        return <CloudOutlined className={iconClass} aria-hidden />
-      case 'figma':
-        return <BgColorsOutlined className={iconClass} aria-hidden />
-      case 'git':
-        return <BranchesOutlined className={iconClass} aria-hidden />
-      default:
-        return <CodeOutlined className={iconClass} aria-hidden />
-    }
-  }
-
-  arsenalCardTKey = (id: string): string => {
-    const map: Record<string, string> = {
-      redux: 'arsenalCardRedux',
-      api: 'arsenalCardApi',
-      node: 'arsenalCardNode',
-      firebase: 'arsenalCardFirebase',
-      figma: 'arsenalCardFigma',
-      git: 'arsenalCardGit',
-    }
-    return map[id] ?? 'arsenalCardRedux'
-  }
-
   skillLabelKey = (id: string): string => {
     switch (id) {
       case 'reactNext':
         return 'skillReactNext'
       case 'typescript':
         return 'skillTypeScript'
-      case 'tailwind':
-        return 'skillTailwind'
+      case 'antDesign':
+        return 'skillAntDesign'
       default:
         return 'skillReactNext'
     }
@@ -214,13 +174,35 @@ class ExperiencePageView extends PureComponent<WithTranslation> {
                 </div>
               </div>
               <div className={styles.arsenalRight}>
-                <div className={styles.arsenalCardGrid}>
-                  {ARSENAL_CARDS.map((card) => (
-                    <div key={card.id} className={styles.arsenalCard}>
-                      {this.arsenalIcon(card.icon)}
-                      <span className={styles.arsenalCardLabel}>
-                        {t(`experience.${this.arsenalCardTKey(card.id)}`)}
-                      </span>
+                <div className={styles.skillGroupGrid}>
+                  {SKILL_GROUPS.map((group) => (
+                    <div key={group.title} className={styles.skillGroupCard}>
+                      <div className={styles.skillGroupHeader}>
+                        <img
+                          src={group.groupIcon}
+                          alt=""
+                          className={styles.skillGroupIcon}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <span className={styles.skillGroupTitle}>{group.title}</span>
+                      </div>
+                      <div className={styles.skillIconGrid}>
+                        {group.items.map((skill) => (
+                          <div key={skill.name} className={styles.skillIconItem}>
+                            <div className={styles.skillIconBox}>
+                              <img
+                                src={skill.icon}
+                                alt={skill.name}
+                                className={styles.skillIconImage}
+                                loading="lazy"
+                                decoding="async"
+                              />
+                            </div>
+                            <span className={styles.skillIconName}>{skill.name}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   ))}
                 </div>

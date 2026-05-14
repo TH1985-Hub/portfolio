@@ -34,7 +34,7 @@
   },
   "contact": {
     "introPrefix": "Подключите ",
-    "introSuffix": " к EmailJS, Resend, serverless-функции или вашему backend.",
+   
     "nameLabel": "Имя",
     "nameRequired": "Пожалуйста, введите ваше имя",
     "namePlaceholder": "Jane Doe",
@@ -45,7 +45,7 @@
     "messageLabel": "Сообщение",
     "messageRequired": "Пожалуйста, введите сообщение",
     "messagePlaceholder": "Что вы хотели бы разработать?",
-    "success": "Спасибо, {{name}}. Подключите эту форму к вашему API или form-сервису."
+  "success": "Спасибо, {{name}}. Татевик свяжется с вами."
   },
   "projects": {
     "heroTitleLead": "Продуманные ",
@@ -73,9 +73,9 @@
     "project3ImageAlt": "Светящиеся сетевые линии для проекта Open AI",
     "project3Title": "Open AI",
     "project3Description": "Создан клон Gemini AI с использованием React, Redux, Material UI и технологий генеративного ИИ, предлагающий интерактивный и современный пользовательский опыт.",
-    "project4ImageAlt": "Тёмная карточка с иконкой облака и галочки для проекта Atmosphere CMS",
-    "project4Title": "Atmosphere CMS",
-    "project4Description": "Headless CMS для цифровых создателей с интуитивным drag-and-drop конструктором схем."
+    "project4ImageAlt": "Тёмная карточка с иконкой облака и галочки для проекта Portfolio",
+    "project4Title": "Portfolio",
+    "project4Description": "Я разработал(а) современный и адаптивный сайт-портфолио с использованием React, TypeScript и Ant Design, где представлены мои проекты, навыки и опыт Front-End разработки с чистым и интерактивным интерфейсом."
   },
   "gemini": {
     "badge": "Чат Gemini",
@@ -107,14 +107,14 @@
     "heroThrough": " через ",
     "heroAccentReact": "React.",
     "heroBody": "Последние 2 года я на стыке безупречной эстетики пикселей и высокопроизводительной инженерии. Мой путь — это постоянный поиск нестандартных решений в frontend-архитектуре.",
-    "statYearsValue": "2+",
+    "statYearsValue": "3+",
     "statYearsLabel": "ЛЕТ ПРОФЕССИОНАЛЬНО",
     "statUiValue": "40+",
     "statUiLabel": "UI-КОМПОНЕНТОВ СОЗДАНО",
     "floatBadgeTitle": "Всегда в инновациях",
     "floatBadgeSubtitle": "Фокус: React и TypeScript",
     "odysseyTitle": "Профессиональный путь",
-    "timeline1JobTitle": "Senior Frontend Engineer",
+    "timeline1JobTitle": "Frontend Engineer",
     "timeline1Company": "Lumina Tech Solutions",
     "timeline1Dates": "Янв 2023 — Настоящее время",
     "timeline1Description": "Руководила архитектурной перестройкой основного дашборда на React 18 и Next.js. Улучшила Core Web Vitals на 40% за счёт code splitting и мемоизации компонентов.",
@@ -128,9 +128,9 @@
     "timeline3Description": "Помогала собирать мобильно-адаптивные лендинги. Освоила CSS-вёрстку и основы JavaScript на клиентских проектах.",
     "arsenalTitle": "Технический арсенал",
     "arsenalBody": "Стек ориентирован на современные веб-стандарты с акцентом на типобезопасность, производительность и поддерживаемость.",
-    "skillReactNext": "React / Next.js",
+    "skillReactNext": "React",
     "skillTypeScript": "TypeScript",
-    "skillTailwind": "Tailwind CSS / UI Design",
+    "skillTailwind": "Ant Design / UI Design",
     "skillPct95": "95%",
     "skillPct90": "90%",
     "skillPct88": "88%",

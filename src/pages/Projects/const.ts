@@ -30,9 +30,9 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 4,
-    tags: ["GRAPHQL", "POSTGRESQL"],
+    tags: ["React", "TypeScript", "Ant Design"],
     coverImage: atmosphereCover,
-    githubUrl: "#",
-    liveUrl: "#",
+    githubUrl: "https://github.com/TH1985-Hub/portfolio",
+    liveUrl: "https://portfolio-beta-olive-3c6lc10cnh.vercel.app/",
   },
 ];
