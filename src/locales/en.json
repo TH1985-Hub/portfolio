@@ -53,7 +53,8 @@
     "messageLabel": "Message",
     "messageRequired": "Please enter a message",
     "messagePlaceholder": "What would you like to build?",
-    "success": "Thanks, {{name}}. Tatevik will be in touch with you."
+    "success": "Thanks, {{name}}. Tatevik will be in touch with you.",
+    "error": "Message failed to send. Please try again."
   },
   "projects": {
     "heroTitleLead": "Engineered ",

@@ -6,5 +6,5 @@ export type ContactFormValues = {
 
 export type ContactPageViewProps = {
   notifySuccess: (text: string) => void
+  notifyError: (text: string) => void
 }
-

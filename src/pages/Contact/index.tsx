@@ -4,13 +4,12 @@ import {
   PhoneOutlined,
   RocketOutlined,
 } from '@ant-design/icons'
+import emailjs from '@emailjs/browser'
 import { App as AntdApp, Button, Card, Form, Input, Typography } from 'antd'
 import { PureComponent } from 'react'
 import { withTranslation, type WithTranslation } from 'react-i18next'
 import styles from './styles.module.css'
-import { contactFormDelayMs } from './const'
 import type { ContactFormValues, ContactPageViewProps } from './types'
-import { delay } from './utils'
 
 const { Title, Paragraph } = Typography
 
@@ -25,11 +24,38 @@ class ContactPageView extends PureComponent<
   state: ContactPageViewState = { submitting: false }
 
   private onFinish = async (values: ContactFormValues) => {
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+    if (!serviceId || !templateId || !publicKey) {
+      this.props.notifyError(
+        'Email service is not configured. Please set EmailJS env variables.',
+      )
+      return
+    }
+
     this.setState({ submitting: true })
     try {
-      await delay(contactFormDelayMs)
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: values.name,
+          from_email: values.email,
+          message: values.message,
+        },
+        { publicKey },
+      )
+
       this.props.notifySuccess(
         this.props.t('contact.success', { name: values.name }),
+      )
+    } catch {
+      this.props.notifyError(
+        this.props.t('contact.error', {
+          defaultValue: 'Message failed to send. Please try again.',
+        }),
       )
     } finally {
       this.setState({ submitting: false })
@@ -203,6 +229,9 @@ export function ContactPage() {
     <LocalizedContactPageView
       notifySuccess={(text) => {
         void message.success(text)
+      }}
+      notifyError={(text) => {
+        void message.error(text)
       }}
     />
   )
