@@ -5,8 +5,8 @@ import {
   RocketOutlined,
 } from '@ant-design/icons'
 import emailjs from '@emailjs/browser'
-import { App as AntdApp, Button, Card, Form, Input, Typography } from 'antd'
-import { PureComponent } from 'react'
+import { App as AntdApp, Button, Card, Form, Input, Typography, type FormInstance } from 'antd'
+import { PureComponent, createRef } from 'react'
 import { withTranslation, type WithTranslation } from 'react-i18next'
 import styles from './styles.module.css'
 import type { ContactFormValues, ContactPageViewProps } from './types'
@@ -22,6 +22,7 @@ class ContactPageView extends PureComponent<
   ContactPageViewState
 > {
   state: ContactPageViewState = { submitting: false }
+  private formRef = createRef<FormInstance<ContactFormValues>>()
 
   private onFinish = async (values: ContactFormValues) => {
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
@@ -51,6 +52,7 @@ class ContactPageView extends PureComponent<
       this.props.notifySuccess(
         this.props.t('contact.success', { name: values.name }),
       )
+      this.formRef.current?.resetFields()
     } catch {
       this.props.notifyError(
         this.props.t('contact.error', {
@@ -171,6 +173,7 @@ class ContactPageView extends PureComponent<
             {t('contact.introSuffix')} */}
           {/* </Paragraph> */}
           <Form<ContactFormValues>
+            ref={this.formRef}
             layout="vertical"
             onFinish={this.onFinish}
             requiredMark="optional"
