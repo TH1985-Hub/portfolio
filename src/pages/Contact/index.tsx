@@ -28,26 +28,49 @@ class ContactPageView extends PureComponent<
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    const telegramBotToken = import.meta.env.VITE_TELEGRAM_BOT_TOKEN
+    const telegramChatId = import.meta.env.VITE_TELEGRAM_CHAT_ID
 
-    if (!serviceId || !templateId || !publicKey) {
+    if (!serviceId || !templateId || !publicKey || !telegramBotToken || !telegramChatId) {
       this.props.notifyError(
-        'Email service is not configured. Please set EmailJS env variables.',
+        'Contact service is not configured. Please set EmailJS and Telegram env variables.',
       )
       return
     }
 
     this.setState({ submitting: true })
     try {
-      await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          from_name: values.name,
-          from_email: values.email,
-          message: values.message,
-        },
-        { publicKey },
-      )
+      const telegramText = [
+        'New Contact Request',
+        `Name: ${values.name}`,
+        `Email: ${values.email}`,
+        `Message: ${values.message}`,
+      ].join('\n')
+
+      await Promise.all([
+        emailjs.send(
+          serviceId,
+          templateId,
+          {
+            from_name: values.name,
+            from_email: values.email,
+            message: values.message,
+          },
+          { publicKey },
+        ),
+        fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: telegramChatId,
+            text: telegramText,
+          }),
+        }).then((response) => {
+          if (!response.ok) {
+            throw new Error('Telegram notification failed')
+          }
+        }),
+      ])
 
       this.props.notifySuccess(
         this.props.t('contact.success', { name: values.name }),
