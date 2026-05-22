@@ -47,7 +47,7 @@ class ContactPageView extends PureComponent<
         `Message: ${values.message}`,
       ].join('\n')
 
-      await Promise.all([
+      const [emailResult, telegramResult] = await Promise.allSettled([
         emailjs.send(
           serviceId,
           templateId,
@@ -72,10 +72,21 @@ class ContactPageView extends PureComponent<
         }),
       ])
 
-      this.props.notifySuccess(
-        this.props.t('contact.success', { name: values.name }),
-      )
-      this.formRef.current?.resetFields()
+      const emailSent = emailResult.status === 'fulfilled'
+      const telegramSent = telegramResult.status === 'fulfilled'
+
+      if (emailSent || telegramSent) {
+        this.props.notifySuccess(
+          this.props.t('contact.success', { name: values.name }),
+        )
+        this.formRef.current?.resetFields()
+      } else {
+        this.props.notifyError(
+          this.props.t('contact.error', {
+            defaultValue: 'Message failed to send. Please try again.',
+          }),
+        )
+      }
     } catch {
       this.props.notifyError(
         this.props.t('contact.error', {
