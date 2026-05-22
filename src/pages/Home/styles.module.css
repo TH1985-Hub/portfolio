@@ -846,6 +846,10 @@
 }
 
 @media (max-width: 768px) {
+  .root {
+    padding: 32px 16px 30px;
+  }
+
   .hero {
     flex-direction: column;
     gap: 16px;
@@ -870,5 +874,170 @@
     min-height: 42px;
     padding: 0 10px;
     font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .root {
+    padding: 40px 20px 32px;
+  }
+
+  .hero {
+    gap: 24px;
+  }
+
+  .heroImage {
+    min-height: 380px;
+  }
+}
+
+@media (max-width: 920px) {
+  .heroRight {
+    justify-content: center;
+  }
+
+  .heroImage {
+    margin-left: 0;
+    width: min(460px, 100%);
+    min-height: 0;
+  }
+
+  .heroImageBadge {
+    left: 10px;
+    bottom: 10px;
+  }
+
+  .skillsRow {
+    margin-top: 28px;
+  }
+
+  .banner {
+    margin-top: 36px;
+  }
+}
+
+@media (max-width: 576px) {
+  .heroLeft {
+    padding: 20px 18px;
+    border-radius: 22px;
+  }
+
+  .heroTitleLinePrimary,
+  .heroTitleLineSecondary {
+    font-size: clamp(2rem, 11vw, 2.8rem);
+  }
+
+  .heroParagraph {
+    line-height: 1.6;
+  }
+
+  .heroActions {
+    width: 100%;
+  }
+
+  .heroActions:global(.ant-space) {
+    width: 100%;
+  }
+
+  .heroActions :global(.ant-space-item) {
+    width: 100%;
+  }
+
+  .primaryButton,
+  .resumeButton {
+    width: 100%;
+  }
+
+  .heroImage {
+    min-height: 320px;
+  }
+
+  .heroImageBadge {
+    position: static;
+    margin-top: 12px;
+    align-self: flex-start;
+  }
+
+  .skillCard {
+    min-height: 0;
+    padding: 22px;
+  }
+
+  .bannerContent {
+    padding: 24px 16px;
+  }
+
+  .bannerSubtitle {
+    line-height: 1.6;
+  }
+
+  .bannerSymbol {
+    white-space: normal;
+    text-align: center;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 440px) {
+  .root {
+    padding: 24px 12px 24px;
+  }
+
+  .hero {
+    gap: 12px;
+  }
+
+  .badge {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+  }
+
+  .heroImage {
+    border-radius: 24px;
+  }
+
+  .heroImageFrame {
+    border-radius: 24px;
+  }
+
+  .heroImageBadge {
+    padding: 10px 12px;
+    border-radius: 16px;
+  }
+
+  .heroImageBadgeValue {
+    font-size: 1.45rem;
+  }
+
+  .heroImageBadgeLabel {
+    font-size: 0.56rem;
+    letter-spacing: 0.1em;
+  }
+
+  .banner {
+    margin-top: 28px;
+    border-radius: 18px;
+  }
+
+  .bannerContent {
+    padding: 18px 12px;
+  }
+
+  .bannerKeyboard {
+    margin-top: 16px;
+    padding: 12px 10px;
+    border-radius: 18px;
+    gap: 6px;
+  }
+
+  .bannerKeyboardRow,
+  .bannerKeyboardRow:last-child {
+    gap: 6px;
+  }
+
+  .bannerSymbol {
+    min-height: 36px;
+    padding: 0 7px;
+    font-size: 0.64rem;
   }
 }

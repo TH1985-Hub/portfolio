@@ -21,6 +21,14 @@
   color: var(--app-accent) !important;
 }
 
+.mobileMenuButton {
+  display: none;
+  border-radius: 999px;
+  border: 1px solid var(--app-border);
+  background: var(--app-surface);
+  color: var(--app-text);
+}
+
 .headerMenu {
   flex: none;
   display: flex;
@@ -149,6 +157,39 @@
   color: var(--app-text);
 }
 
+.mobileDrawer :global(.ant-drawer-body) {
+  padding: 16px;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobileNavLink {
+  border: 1px solid var(--app-border);
+  background: transparent;
+  color: var(--app-text);
+  border-radius: 10px;
+  padding: 10px 12px;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
+.mobileNavLinkActive {
+  border-color: var(--app-accent);
+  color: var(--app-accent);
+}
+
+.mobileDrawerActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
 .content {
   padding: 24px 24px 112px;
   width: 100%;
@@ -190,6 +231,7 @@
 
 .footerLinks :global(a) {
   color: var(--app-text-muted);
+  word-break: break-word;
 }
 
 .footerLinks :global(a:hover) {
@@ -224,26 +266,34 @@
     display: none;
   }
 
-  .menu {
-    bottom: 1rem;
-    padding: 0.55rem 0.75rem;
-    gap: 0.45rem;
+  .headerActions {
+    display: none;
   }
 
-  .menu :global(.ant-menu-item) {
-    width: 42px;
-    min-width: 42px;
-    height: 42px;
-    font-size: 1rem;
+  .mobileMenuButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu {
+    display: none;
   }
 
   .content {
-    padding: 16px 16px 104px;
+    padding: 16px;
   }
 
   .footerInner {
-    padding: 20px 16px 88px;
+    padding: 20px 16px;
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .footerLinks {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
   }
 }

@@ -201,3 +201,37 @@
     min-height: auto;
   }
 }
+
+@media (max-width: 900px) {
+  .layout {
+    gap: 16px;
+  }
+
+  .card,
+  .infoCard {
+    border-radius: 24px !important;
+    padding: 22px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .infoTitle {
+    font-size: clamp(1.45rem, 8.5vw, 1.85rem) !important;
+  }
+
+  .infoDescription {
+    line-height: 1.65 !important;
+  }
+
+  .infoItem {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .infoIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    font-size: 1rem;
+  }
+}

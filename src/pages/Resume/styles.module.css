@@ -161,3 +161,31 @@
     padding: 20px;
   }
 }
+
+@media (max-width: 520px) {
+  .hero {
+    border-radius: 22px;
+    padding: 20px 16px;
+  }
+
+  .title {
+    font-size: clamp(1.7rem, 10vw, 2.2rem) !important;
+  }
+
+  .resumeCard {
+    border-radius: 22px;
+  }
+
+  .markdownShell {
+    border-radius: 18px;
+    padding: 14px;
+  }
+
+  .markdownContent :global(h1) {
+    font-size: 1.55rem;
+  }
+
+  .markdownContent :global(h2) {
+    font-size: 1rem;
+  }
+}

@@ -1,16 +1,18 @@
 import { useState } from "react";
 import {
   AppstoreOutlined,
+  CloseOutlined,
   GithubOutlined,
   HomeOutlined,
   LinkedinOutlined,
+  MenuOutlined,
   MoonOutlined,
   PhoneOutlined,
   ProjectOutlined,
   SunOutlined,
   TwitterOutlined,
 } from "@ant-design/icons";
-import { Button, Layout, Menu, Space, Typography } from "antd";
+import { Button, Drawer, Layout, Menu, Space, Typography } from "antd";
 import { PureComponent, useContext } from "react";
 import { useTranslation, withTranslation, type WithTranslation } from "react-i18next";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
@@ -24,7 +26,18 @@ import { getSelectedMenuKeys, shouldShowGeminiWidget } from "./utils";
 
 const { Header, Content, Footer } = Layout;
 
-class AppLayoutView extends PureComponent<AppLayoutViewProps & WithTranslation> {
+type AppLayoutViewState = {
+  mobileMenuOpen: boolean;
+};
+
+class AppLayoutView extends PureComponent<
+  AppLayoutViewProps & WithTranslation,
+  AppLayoutViewState
+> {
+  state: AppLayoutViewState = {
+    mobileMenuOpen: false,
+  };
+
   render() {
     const selectedKeys = getSelectedMenuKeys(this.props.pathname);
     const { showGeminiWidget } = this.props;
@@ -66,6 +79,14 @@ class AppLayoutView extends PureComponent<AppLayoutViewProps & WithTranslation> 
           <Typography.Title level={3} className={styles.title}>
             Tatevik Harutyunyan
           </Typography.Title>
+          <Button
+            aria-label="Open menu"
+            className={styles.mobileMenuButton}
+            icon={<MenuOutlined />}
+            onClick={() => {
+              this.setState({ mobileMenuOpen: true });
+            }}
+          />
           <Space size={10} className={styles.headerActions}>
             <nav className={styles.headerMenu} aria-label="Header navigation">
               {headerMenuItems.map((item) => {
@@ -107,6 +128,57 @@ class AppLayoutView extends PureComponent<AppLayoutViewProps & WithTranslation> 
             />
           </Space>
         </Header>
+        <Drawer
+          title="Menu"
+          placement="right"
+          open={this.state.mobileMenuOpen}
+          onClose={() => {
+            this.setState({ mobileMenuOpen: false });
+          }}
+          className={styles.mobileDrawer}
+          closeIcon={<CloseOutlined />}
+        >
+          <nav className={styles.mobileNav} aria-label="Mobile navigation">
+            {headerMenuItems.map((item) => {
+              const isActive = selectedKeys.includes(item.key);
+              return (
+                <button
+                  key={item.key}
+                  type="button"
+                  className={`${styles.mobileNavLink} ${
+                    isActive ? styles.mobileNavLinkActive : ""
+                  }`}
+                  onClick={() => {
+                    this.props.onNavigate(item.key);
+                    this.setState({ mobileMenuOpen: false });
+                  }}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </nav>
+          <div className={styles.mobileDrawerActions}>
+            <LanguageSwitcher
+              lang={this.props.lang}
+              onChange={this.props.onChangeLanguage}
+            />
+            <Button
+              aria-label={t("layout.toggleTheme")}
+              className={styles.themeButton}
+              icon={
+                this.props.themeMode === "dark" ? (
+                  <SunOutlined />
+                ) : (
+                  <MoonOutlined />
+                )
+              }
+              onClick={() => {
+                this.props.onToggleThemeMode();
+              }}
+            />
+          </div>
+        </Drawer>
         <Menu
           mode="horizontal"
           selectedKeys={selectedKeys}

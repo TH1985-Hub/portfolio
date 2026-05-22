@@ -246,3 +246,26 @@
     flex-direction: column;
   }
 }
+
+@media (max-width: 520px) {
+  .hero {
+    border-radius: 22px;
+    padding: 20px 16px;
+  }
+
+  .title {
+    font-size: clamp(1.7rem, 10vw, 2.2rem) !important;
+  }
+
+  .chatCard {
+    border-radius: 22px;
+  }
+
+  .helperRow {
+    padding: 12px;
+  }
+
+  .messagesContainer {
+    min-height: 240px;
+  }
+}

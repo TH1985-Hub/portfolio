@@ -463,3 +463,33 @@
     font-size: 0.85rem !important;
   }
 }
+
+@media (max-width: 576px) {
+  .title {
+    font-size: clamp(2rem, 10vw, 2.5rem);
+  }
+
+  .projectCard {
+    padding: 1rem;
+    border-radius: 1.3rem;
+  }
+
+  .projectActions {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .actionButton {
+    width: 100%;
+  }
+
+  .ctaSection {
+    margin-top: 44px;
+    padding: 30px 18px;
+    border-radius: 24px;
+  }
+
+  .ctaTitle {
+    font-size: 1.6rem !important;
+  }
+}

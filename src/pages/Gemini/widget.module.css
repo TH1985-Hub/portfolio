@@ -306,3 +306,24 @@
     align-self: flex-end;
   }
 }
+
+@media (max-width: 420px) {
+  .root {
+    right: 10px;
+    left: 10px;
+    bottom: 10px;
+  }
+
+  .panel {
+    border-radius: 22px !important;
+  }
+
+  .panel :global(.ant-card-body) {
+    padding: 14px;
+  }
+
+  .messages {
+    min-height: 220px;
+    max-height: 300px;
+  }
+}
