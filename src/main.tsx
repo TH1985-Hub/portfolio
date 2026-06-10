@@ -2,8 +2,11 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { I18nextProvider } from 'react-i18next'
 import { App } from '@/App'
+import { redirectResumeReloadToHome } from '@/app/redirectResumeReload'
 import { i18n } from '@/app/i18n'
 import './index.css'
+
+redirectResumeReloadToHome()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

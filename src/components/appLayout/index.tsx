@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   AppstoreOutlined,
   CloseOutlined,
+  FileTextOutlined,
   GithubOutlined,
   HomeOutlined,
   LinkedinOutlined,
@@ -15,7 +16,7 @@ import {
 import { Button, Drawer, Layout, Menu, Space, Typography } from "antd";
 import { PureComponent, useContext } from "react";
 import { useTranslation, withTranslation, type WithTranslation } from "react-i18next";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, ScrollRestoration, useLocation, useNavigate } from "react-router-dom";
 import { LanguageSwitcher } from "@/components/common/languageSwitcher";
 import { GeminiWidget } from "../../pages/Gemini/widget";
 
@@ -47,6 +48,7 @@ class AppLayoutView extends PureComponent<
       { key: "/gemini", label: t("layout.menuGemini") },
       { key: "/projects", label: t("common.projects") },
       { key: "/experience", label: t("common.experience") },
+      { key: "/resume", label: t("common.resume") },
       { key: "/contact", label: t("common.contact") },
     ];
     const menuItems = [
@@ -65,6 +67,11 @@ class AppLayoutView extends PureComponent<
         key: "/experience",
         label: <GithubOutlined />,
         title: t("common.experience"),
+      },
+      {
+        key: "/resume",
+        label: <FileTextOutlined />,
+        title: t("common.resume"),
       },
       {
         key: "/contact",
@@ -189,6 +196,7 @@ class AppLayoutView extends PureComponent<
           className={styles.menu}
         />
         <Content className={styles.content}>
+          <ScrollRestoration />
           <Outlet />
 
           {showGeminiWidget && <GeminiWidget />}
@@ -233,6 +241,16 @@ export function AppLayout() {
   const { i18n } = useTranslation();
 
   const [isChatOpen, setIsChatOpen] = useState(false);
+
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname, location.hash]);
 
   const showGeminiWidget = shouldShowGeminiWidget(location.pathname);
 

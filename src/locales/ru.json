@@ -10,8 +10,17 @@
     "contact": "Контакты"
   },
   "resume": {
-    "badge": "Сохраненное резюме в Markdown",
+    "badge": "Профессиональный профиль",
+    "heroLead": "Четкий обзор моего ",
+    "heroAccent": "пути и фокуса.",
     "description": "Это резюме хранится в отдельном markdown-файле и отображается прямо внутри портфолио.",
+    "statYearsValue": "3+",
+    "statYearsLabel": "Лет во frontend",
+    "statFocusValue": "5",
+    "statFocusLabel": "Ключевых направлений",
+    "documentTitle": "Полное резюме",
+    "sidebarTitle": "Быстрый доступ",
+    "sidebarSource": "Хранится в src/content/resume.md и синхронизировано с Gemini.",
     "askGeminiButton": "Спросить Gemini об этом",
     "cardBadge": "Резюме портфолио"
   },

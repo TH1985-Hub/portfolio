@@ -10,8 +10,17 @@
     "contact": "Contact"
   },
   "resume": {
-    "badge": "Saved Markdown Resume",
+    "badge": "Professional Profile",
+    "heroLead": "A clear snapshot of my ",
+    "heroAccent": "journey and focus.",
     "description": "This resume is stored in a standalone markdown file and rendered directly inside the portfolio.",
+    "statYearsValue": "3+",
+    "statYearsLabel": "Years in Frontend",
+    "statFocusValue": "5",
+    "statFocusLabel": "Core Focus Areas",
+    "documentTitle": "Full Resume",
+    "sidebarTitle": "Quick Access",
+    "sidebarSource": "Stored in src/content/resume.md and synced with Gemini.",
     "askGeminiButton": "Ask Gemini About It",
     "cardBadge": "Portfolio Resume"
   },

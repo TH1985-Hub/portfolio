@@ -8,6 +8,27 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      (function () {
+        if (window.location.hash) return;
+
+        var routes = ['about', 'gemini', 'projects', 'resume', 'experience', 'contact'];
+        var path = window.location.pathname;
+        var segments = path.split('/').filter(Boolean);
+        var route = segments[segments.length - 1];
+
+        if (!route || routes.indexOf(route) === -1) return;
+
+        var base = path.slice(0, path.length - route.length);
+        if (!base.endsWith('/')) {
+          base += '/';
+        }
+
+        window.location.replace(
+          base + '#/' + route + window.location.search + window.location.hash,
+        );
+      })();
+    </script>
     <script type="module" src="./src/main.tsx"></script>
   </body>
 </html>

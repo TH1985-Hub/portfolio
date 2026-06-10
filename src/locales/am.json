@@ -10,8 +10,17 @@
     "contact": "Կապ"
   },
   "resume": {
-    "badge": "Պահված Markdown ռեզյումե",
+    "badge": "Մասնագիտական պրոֆիլ",
+    "heroLead": "Հստակ պատկերացում իմ ",
+    "heroAccent": "ուղու և ուշադրության կենտրոնի մասին։",
     "description": "Այս ռեզյումեն պահվում է առանձին markdown ֆայլում և անմիջապես ցուցադրվում է պորտֆոլիոյում։",
+    "statYearsValue": "3+",
+    "statYearsLabel": "Տարի frontend-ում",
+    "statFocusValue": "5",
+    "statFocusLabel": "Հիմնական ուղղություններ",
+    "documentTitle": "Լրիվ ռեզյումե",
+    "sidebarTitle": "Արագ մուտք",
+    "sidebarSource": "Պահվում է src/content/resume.md-ում և համաժամեցված է Gemini-ի հետ։",
     "askGeminiButton": "Հարցրու Gemini-ին դրա մասին",
     "cardBadge": "Պորտֆոլիոյի ռեզյումե"
   },
